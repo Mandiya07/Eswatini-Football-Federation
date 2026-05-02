@@ -144,6 +144,14 @@ export default function ClubProfile() {
   ];
 
   const [expandedMatch, setExpandedMatch] = React.useState<number | null>(null);
+  const [typeFilter, setTypeFilter] = React.useState('All');
+  const [resultFilter, setResultFilter] = React.useState('All');
+
+  const filteredMatches = recentMatches.filter(match => {
+    const typeMatch = typeFilter === 'All' || match.type === typeFilter;
+    const resultMatch = resultFilter === 'All' || match.result === resultFilter;
+    return typeMatch && resultMatch;
+  });
 
   const photos = [
     club.image,
@@ -426,14 +434,57 @@ export default function ClubProfile() {
           <div className="space-y-8">
             {/* Performance Stats */}
             <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Trophy className="w-5 h-5 text-yellow-500" /> Recent Form
-                </CardTitle>
+              <CardHeader className="pb-2">
+                <div className="flex items-center justify-between">
+                  <CardTitle className="flex items-center gap-2">
+                    <Trophy className="w-5 h-5 text-yellow-500" /> Recent Form
+                  </CardTitle>
+                </div>
+                <div className="mt-4 space-y-3">
+                  <div className="flex flex-col gap-2">
+                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Competition</span>
+                    <div className="flex gap-1.5 overflow-x-auto pb-1 no-scrollbar">
+                      {['All', 'League', 'Cup'].map((t) => (
+                        <button
+                          key={t}
+                          onClick={() => setTypeFilter(t)}
+                          className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter transition-all ${
+                            typeFilter === t 
+                              ? 'bg-blue-600 text-white shadow-md shadow-blue-200' 
+                              : 'bg-zinc-100 text-gray-500 hover:bg-zinc-200'
+                          }`}
+                        >
+                          {t}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Result</span>
+                    <div className="flex gap-1.5">
+                      {['All', 'W', 'D', 'L'].map((r) => (
+                        <button
+                          key={r}
+                          onClick={() => setResultFilter(r)}
+                          className={`w-8 h-8 rounded-full text-[10px] font-black transition-all flex items-center justify-center ${
+                            resultFilter === r 
+                              ? r === 'W' ? 'bg-green-500 text-white shadow-lg shadow-green-100' :
+                                r === 'L' ? 'bg-red-500 text-white shadow-lg shadow-red-100' :
+                                r === 'D' ? 'bg-zinc-800 text-white shadow-lg shadow-zinc-200' :
+                                'bg-blue-600 text-white shadow-lg shadow-blue-100'
+                              : 'bg-zinc-100 text-gray-500 hover:bg-zinc-200'
+                          }`}
+                        >
+                          {r}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </CardHeader>
-              <CardContent>
+              <CardContent className="pt-2">
                 <div className="space-y-2">
-                  {recentMatches.map((match, i) => (
+                  {filteredMatches.length > 0 ? filteredMatches.map((match, i) => (
                     <div key={i} className="border-b last:border-0 overflow-hidden">
                       <div 
                         className={`flex items-center justify-between py-3 px-2 rounded-lg cursor-pointer transition-colors ${
@@ -533,7 +584,21 @@ export default function ClubProfile() {
                         )}
                       </AnimatePresence>
                     </div>
-                  ))}
+                  )) : (
+                    <div className="py-12 text-center bg-zinc-50/50 rounded-xl border border-dashed border-zinc-200">
+                      <History className="w-8 h-8 text-zinc-300 mx-auto mb-3 opacity-50" />
+                      <p className="text-gray-500 text-sm font-bold tracking-tight">No Results Found</p>
+                      <p className="text-[10px] text-gray-400 mb-4 px-4">Adjust your filters to see more match history.</p>
+                      <Button 
+                        variant="outline" 
+                        size="sm"
+                        className="text-[10px] h-7 font-bold uppercase tracking-widest px-4"
+                        onClick={() => { setTypeFilter('All'); setResultFilter('All'); }}
+                      >
+                        Reset Filters
+                      </Button>
+                    </div>
+                  )}
                 </div>
               </CardContent>
             </Card>
