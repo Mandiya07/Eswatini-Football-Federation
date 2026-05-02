@@ -615,7 +615,7 @@ export default function ClubProfile() {
       </main>
 
       <footer className="bg-black py-8 border-t border-white/10 text-center text-gray-500 mt-auto">
-        <p className="text-sm">FFE Football Federation &copy; 2026</p>
+        <p className="text-sm">Football Federation Eswatini &copy; 2026</p>
       </footer>
     </div>
   );

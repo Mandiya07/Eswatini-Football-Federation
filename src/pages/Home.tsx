@@ -24,7 +24,7 @@ export default function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center">
             <span className="inline-block py-1 px-3 rounded-full bg-primary/20 text-primary font-semibold text-sm mb-6 border border-primary/50 tracking-wider uppercase">
-              A New Era for Eswatini Football
+              Football Federation Eswatini
             </span>
             <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-8 max-w-5xl mx-auto leading-tight">
               The Future of Football <br className="hidden md:block"/> Belongs to the <span className="text-secondary">Clubs</span>
