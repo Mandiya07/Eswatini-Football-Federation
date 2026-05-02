@@ -11,7 +11,7 @@ export default function Home() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative pt-32 pb-40 bg-black text-white overflow-hidden">
+      <section className="relative pt-40 pb-24 bg-black text-white overflow-hidden">
         <img 
           src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
           alt="Professional Football Stadium"
@@ -29,7 +29,7 @@ export default function Home() {
             <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-8 max-w-5xl mx-auto leading-tight">
               The Future of Football <br className="hidden md:block"/> Belongs to the <span className="text-secondary">Clubs</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-300 mb-24 max-w-3xl mx-auto leading-relaxed">
               The Football Federation Eswatini is a bold, professional ecosystem built strictly by and for football clubs. Zero corruption. Total ownership.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
