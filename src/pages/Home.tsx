@@ -30,7 +30,7 @@ export default function Home() {
               The Future of Football <br className="hidden md:block"/> Belongs to the <span className="text-secondary">Clubs</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-              The Indvundvundvwane Football Federation is a bold, professional ecosystem built strictly by and for football clubs. Zero corruption. Total ownership.
+              The Football Federation Eswatini is a bold, professional ecosystem built strictly by and for football clubs. Zero corruption. Total ownership.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
               <Button size="lg" className="bg-primary text-white hover:bg-primary/90 text-lg h-14 px-8 w-full sm:w-auto" asChild>
@@ -73,7 +73,7 @@ export default function Home() {
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <h2 className="text-4xl font-bold tracking-tight mb-4 text-black">A Two-Tier Professional Ecosystem</h2>
             <p className="text-lg text-gray-600">
-              Unlike traditional models, the IFF is structured to maximize commercial value, guarantee professional standards, and ensure true club ownership.
+              Unlike traditional models, the FFE is structured to maximize commercial value, guarantee professional standards, and ensure true club ownership.
             </p>
           </div>
           
@@ -86,7 +86,7 @@ export default function Home() {
                 <Trophy className="w-12 h-12 text-secondary mb-6" />
                 <h4 className="text-2xl font-bold mb-4">The Flagship Tier</h4>
                 <p className="text-gray-600 mb-6 text-lg">
-                  An independent company owned equally by the top 16 qualifying clubs. It operates autonomously while complying strictly with IFF governance rules.
+                  An independent company owned equally by the top 16 qualifying clubs. It operates autonomously while complying strictly with FFE governance rules.
                 </p>
                 <ul className="space-y-4">
                   <li className="flex gap-3 text-gray-700 font-medium">
@@ -194,7 +194,7 @@ export default function Home() {
       
       {/* Footer */}
       <footer className="bg-black py-12 border-t border-white/10 text-center text-gray-500">
-        <p>© {new Date().getFullYear()} Indvundvundvwane Football Federation. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Football Federation Eswatini. All rights reserved.</p>
       </footer>
     </div>
   );

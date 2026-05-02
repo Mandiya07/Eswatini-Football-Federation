@@ -45,7 +45,7 @@ export default function Dashboard() {
                 <Card>
                   <CardHeader>
                     <CardTitle>League Updates & Communications</CardTitle>
-                    <CardDescription>Official announcements from the Indvundvundvwane Football Federation.</CardDescription>
+                    <CardDescription>Official announcements from the Football Federation Eswatini.</CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <div className="border-l-4 border-primary pl-4 py-1">
@@ -114,7 +114,7 @@ export default function Dashboard() {
                            <CheckCircle2 className="w-6 h-6 text-blue-600" />
                            <div>
                              <p className="font-bold">Corporate Entity Registration</p>
-                             <p className="text-sm text-gray-500">Approved by IFF Legal</p>
+                             <p className="text-sm text-gray-500">Approved by FFE Legal</p>
                            </div>
                         </div>
                         <Button variant="outline" size="sm">View</Button>
@@ -125,7 +125,7 @@ export default function Dashboard() {
                            <CheckCircle2 className="w-6 h-6 text-blue-600" />
                            <div>
                              <p className="font-bold">Financial Audits (Last 2 Years)</p>
-                             <p className="text-sm text-gray-500">Approved by IFF Finance</p>
+                             <p className="text-sm text-gray-500">Approved by FFE Finance</p>
                            </div>
                         </div>
                         <Button variant="outline" size="sm">View</Button>
@@ -180,7 +180,7 @@ export default function Dashboard() {
                           <div className="w-10 h-10 bg-zinc-200 rounded-full"></div>
                           <div>
                              <p className="font-bold text-sm">Sipho Dlamini</p>
-                             <p className="text-xs text-gray-500">IFF Compliance Desk</p>
+                             <p className="text-xs text-gray-500">FFE Compliance Desk</p>
                           </div>
                        </div>
                        <Button variant="outline" className="w-full flex gap-2"><Mail className="w-4 h-4"/> Message Officer</Button>
@@ -322,7 +322,7 @@ export default function Dashboard() {
                  <Card className="bg-black text-white">
                     <CardHeader>
                        <CardTitle className="text-xl">Secure Upload</CardTitle>
-                       <CardDescription className="text-gray-400">All submissions are encrypted and available only to the IFF Finance Committee.</CardDescription>
+                       <CardDescription className="text-gray-400">All submissions are encrypted and available only to the FFE Finance Committee.</CardDescription>
                     </CardHeader>
                     <CardContent>
                        <div className="border-2 border-dashed border-white/20 rounded-xl p-8 text-center hover:bg-white/5 transition-colors cursor-pointer">
@@ -422,7 +422,7 @@ export default function Dashboard() {
       </main>
       
       <footer className="bg-black py-8 border-t border-white/10 text-center text-gray-500 mt-auto">
-        <p className="text-sm">IFF Member Portal v1.0</p>
+        <p className="text-sm">FFE Member Portal v1.0</p>
       </footer>
     </div>
   );

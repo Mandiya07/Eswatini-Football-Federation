@@ -23,7 +23,7 @@ export default function Leagues() {
           
           {/* Pyramid Visual */}
           <div className="mb-24 flex flex-col items-center">
-            <h2 className="text-3xl font-bold mb-12 text-center">The IFF Pyramid</h2>
+            <h2 className="text-3xl font-bold mb-12 text-center">The FFE Pyramid</h2>
             <div className="w-full max-w-2xl flex flex-col items-center gap-4">
               <div className="w-[60%] bg-secondary text-black p-6 flex flex-col items-center justify-center rounded-t-xl shadow-xl relative border-2 border-secondary z-20">
                 <Trophy className="w-8 h-8 mb-2 opacity-80" />
@@ -54,7 +54,7 @@ export default function Leagues() {
                 <div className="w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center border border-secondary/50">
                   <Trophy className="w-6 h-6 text-secondary" />
                 </div>
-                <h2 className="text-3xl font-bold">Indvundvundvwane Major League</h2>
+                <h2 className="text-3xl font-bold">Major League</h2>
               </div>
               <Card className="border-secondary/50 shadow-md">
                 <CardContent className="p-8 prose prose-lg max-w-none prose-p:text-gray-700">
@@ -64,7 +64,7 @@ export default function Leagues() {
                   <ul>
                     <li><strong>Shareholder Clubs:</strong> The league is limited to exactly 16 clubs. These clubs act as equal shareholders in the Major League company.</li>
                     <li><strong>Independence:</strong> The league operates independently to maximize commercial revenue and broadcast rights, ensuring profitability for its shareholders.</li>
-                    <li><strong>Federation Oversight:</strong> While commercially independent, it operates under the strict governance rules of the IFF and the universal Laws of the Game.</li>
+                    <li><strong>Federation Oversight:</strong> While commercially independent, it operates under the strict governance rules of the FFE and the universal Laws of the Game.</li>
                   </ul>
                 </CardContent>
               </Card>
@@ -105,7 +105,7 @@ export default function Leagues() {
       </section>
 
       <footer className="bg-black py-12 border-t border-white/10 text-center text-gray-500 mt-auto">
-        <p>© {new Date().getFullYear()} Indvundvundvwane Football Federation. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Football Federation Eswatini. All rights reserved.</p>
       </footer>
     </div>
   );

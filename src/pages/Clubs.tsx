@@ -44,7 +44,7 @@ export default function Clubs() {
         <div className="container mx-auto max-w-5xl text-center relative z-10">
           <h1 className="text-5xl font-bold tracking-tighter mb-4">Member Clubs & Infrastructure</h1>
           <p className="text-xl text-gray-400 leading-relaxed max-w-3xl mx-auto mb-8">
-            Explore our verified professional clubs. The IFF mandates strict infrastructure guidelines to guarantee modern, safe facilities for players and fans.
+            Explore our verified professional clubs. The FFE mandates strict infrastructure guidelines to guarantee modern, safe facilities for players and fans.
           </p>
           
           <div className="max-w-xl mx-auto relative group">
@@ -129,7 +129,7 @@ export default function Clubs() {
                    <Building className="w-5 h-5 text-primary" /> Verified Facilities
                 </h2>
                 <p className="text-sm text-gray-500 mt-1">
-                   All clubs listed have successfully completed Phase 1 of the IFF Infrastructure Verification process.
+                   All clubs listed have successfully completed Phase 1 of the FFE Infrastructure Verification process.
                 </p>
              </div>
 
@@ -187,7 +187,7 @@ export default function Clubs() {
       </main>
 
       <footer className="bg-black py-8 border-t border-white/10 text-center text-gray-500 mt-auto">
-        <p className="text-sm">IFF Football Federation &copy; 2026</p>
+        <p className="text-sm">FFE Football Federation &copy; 2026</p>
       </footer>
     </div>
   );

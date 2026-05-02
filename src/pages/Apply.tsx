@@ -32,7 +32,7 @@ export default function Apply() {
             <CheckCircle2 className="w-20 h-20 text-blue-500 mx-auto mb-6" />
             <h2 className="text-3xl font-bold mb-4">Application Submitted</h2>
             <p className="text-gray-600 mb-8 text-lg">
-              Your licensing package has been successfully submitted to the IFF Digital Licensing Engine. 
+              Your licensing package has been successfully submitted to the FFE Digital Licensing Engine. 
               Our compliance officers will review your corporate and infrastructure documents within 48 hours.
             </p>
             <div className="bg-zinc-50 border rounded-xl p-6 mb-8 text-left">
@@ -44,7 +44,7 @@ export default function Apply() {
                   </li>
                   <li className="flex items-center gap-3">
                      <span className="bg-primary/10 text-primary text-xs font-bold px-2 py-1 rounded">Under Review</span>
-                     <span className="text-sm text-gray-700">Detailed compliance & finance audit by IFF</span>
+                     <span className="text-sm text-gray-700">Detailed compliance & finance audit by FFE</span>
                   </li>
                   <li className="flex items-center gap-3">
                      <span className="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded">Approved</span>
@@ -272,19 +272,19 @@ export default function Apply() {
                            <div className="flex gap-3">
                              <input type="checkbox" id="dec1" className="mt-1 w-4 h-4 accent-primary" required />
                              <label htmlFor="dec1" className="text-sm text-gray-700 leading-relaxed">
-                               I declare that all information provided is accurate and true. I understand that falsifying documents will lead to immediate lifetime ban from the Indvundvundvwane Football Federation.
+                               I declare that all information provided is accurate and true. I understand that falsifying documents will lead to immediate lifetime ban from the Football Federation Eswatini.
                              </label>
                            </div>
                            <div className="flex gap-3">
                              <input type="checkbox" id="dec2" className="mt-1 w-4 h-4 accent-primary" required />
                              <label htmlFor="dec2" className="text-sm text-gray-700 leading-relaxed">
-                               The club agrees to abide by the IFF Constitution, Financial Fair Play Regulations, and the Anti-Corruption Code.
+                               The club agrees to abide by the FFE Constitution, Financial Fair Play Regulations, and the Anti-Corruption Code.
                              </label>
                            </div>
                            <div className="flex gap-3">
                              <input type="checkbox" id="dec3" className="mt-1 w-4 h-4 accent-primary" required />
                              <label htmlFor="dec3" className="text-sm text-gray-700 leading-relaxed">
-                               I authorize the IFF to conduct independent verification of company registration and land deeds with relevant national authorities.
+                               I authorize the FFE to conduct independent verification of company registration and land deeds with relevant national authorities.
                              </label>
                            </div>
                          </div>

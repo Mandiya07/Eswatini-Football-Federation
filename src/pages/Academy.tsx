@@ -159,7 +159,7 @@ export default function Academy() {
           <GraduationCap className="w-16 h-16 mx-auto text-primary mb-6" />
           <h2 className="text-3xl font-bold mb-4">Earn Your Club Management Diploma</h2>
           <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
-            Complete the core curriculum to receive the official IFF Club Management Diploma, a requirement for all Major League club General Managers by 2028.
+            Complete the core curriculum to receive the official FFE Club Management Diploma, a requirement for all Major League club General Managers by 2028.
           </p>
           <Button size="lg" className="bg-primary text-white hover:bg-primary/90 px-8">
             View Certification Pathway
@@ -168,7 +168,7 @@ export default function Academy() {
       </section>
 
       <footer className="bg-black py-12 border-t border-white/10 text-center text-gray-500 mt-auto">
-        <p>© {new Date().getFullYear()} Indvundvundvwane Football Federation. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Football Federation Eswatini. All rights reserved.</p>
       </footer>
     </div>
   );

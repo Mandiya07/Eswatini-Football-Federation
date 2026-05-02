@@ -43,7 +43,7 @@ export default function Governance() {
             <div>
               <h2 className="text-3xl font-bold mb-6">Clubs as Watchdogs</h2>
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                In traditional federations, power is centralized, leading to opacity and corruption. In the IFF, power is distributed among the member clubs. 
+                In traditional federations, power is centralized, leading to opacity and corruption. In the FFE, power is distributed among the member clubs. 
               </p>
               <p className="text-lg text-gray-700 leading-relaxed">
                 Because clubs are the sole shareholders of the league and the sole members of the federation, they have a direct financial incentive to ensure absolute integrity. If the product is tainted, their investment loses value. Therefore, the clubs serve as the ultimate watchdogs.
@@ -86,7 +86,7 @@ export default function Governance() {
                 </TableHeader>
                 <TableBody>
                   {[
-                    { doc: "IFF Official Constitution 2026", cat: "Core Governance", date: "Jan 15, 2026" },
+                    { doc: "FFE Official Constitution 2026", cat: "Core Governance", date: "Jan 15, 2026" },
                     { doc: "Financial Fair Play Regulations", cat: "Finance", date: "Feb 02, 2026" },
                     { doc: "Anti-Corruption & Betting Code", cat: "Integrity", date: "Mar 10, 2026" },
                     { doc: "Club Licensing Requirements v2", cat: "Membership", date: "Apr 01, 2026" },
@@ -116,7 +116,7 @@ export default function Governance() {
              <div className="relative z-10 max-w-3xl">
                <h3 className="text-3xl font-bold mb-4">Independence vs Oversight</h3>
                <p className="text-gray-400 text-lg leading-relaxed mb-6">
-                  The Major League operates as an independent commercial company to maximize agility and profit. However, it cannot govern football law. The IFF acts as the regulatory body that oversees compliance with the absolute Laws of the Game, issuing licenses and enforcing sporting integrity.
+                  The Major League operates as an independent commercial company to maximize agility and profit. However, it cannot govern football law. The FFE acts as the regulatory body that oversees compliance with the absolute Laws of the Game, issuing licenses and enforcing sporting integrity.
                </p>
                <p className="text-gray-400 text-lg leading-relaxed">
                   This separation of commercial operation and regulatory oversight ensures no conflicts of interest.
@@ -170,7 +170,7 @@ export default function Governance() {
       </section>
 
       <footer className="bg-black py-12 border-t border-white/10 text-center text-gray-500 mt-auto">
-        <p>© {new Date().getFullYear()} Indvundvundvwane Football Federation. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Football Federation Eswatini. All rights reserved.</p>
       </footer>
     </div>
   );

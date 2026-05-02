@@ -34,7 +34,7 @@ export default function Contact() {
                 <div className="space-y-6 text-gray-600">
                   <div className="flex items-start gap-4">
                     <MapPin className="w-6 h-6 text-black flex-shrink-0" />
-                    <p>IFF Tower, Mbabane<br/>Kingdom of Eswatini</p>
+                    <p>FFE Tower, Mbabane<br/>Kingdom of Eswatini</p>
                   </div>
                   <div className="flex items-center gap-4">
                     <Mail className="w-6 h-6 text-black flex-shrink-0" />
@@ -117,7 +117,7 @@ export default function Contact() {
       </section>
 
       <footer className="bg-black py-12 border-t border-white/10 text-center text-gray-500 mt-auto">
-        <p>© {new Date().getFullYear()} Indvundvundvwane Football Federation. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Football Federation Eswatini. All rights reserved.</p>
       </footer>
     </div>
   );

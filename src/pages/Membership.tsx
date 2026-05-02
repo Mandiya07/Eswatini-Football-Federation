@@ -15,7 +15,7 @@ export default function Membership() {
         <div className="container mx-auto max-w-4xl text-center relative z-10">
           <h1 className="text-5xl font-bold tracking-tighter mb-6">Membership Requirements</h1>
           <p className="text-xl text-gray-400 leading-relaxed">
-            Joining the IFF means committing to the highest standards of professional football infrastructure and business operations.
+            Joining the FFE means committing to the highest standards of professional football infrastructure and business operations.
           </p>
         </div>
       </section>
@@ -29,7 +29,7 @@ export default function Membership() {
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">The Founding 16 Rule</h3>
                 <p className="text-gray-700 text-lg">
-                  The first 16 qualifying clubs to successfully complete the membership process will strictly form the Indvundvundvwane Major League on a <strong>first-come, first-served basis</strong>. All subsequent qualifying clubs will enter the Federation League.
+                  The first 16 qualifying clubs to successfully complete the membership process will strictly form the Major League on a <strong>first-come, first-served basis</strong>. All subsequent qualifying clubs will enter the Federation League.
                 </p>
               </div>
             </div>
@@ -79,8 +79,8 @@ export default function Membership() {
           <div className="space-y-6 mb-16">
             {[
               { step: 1, title: "Initial Application", desc: "Submit the online club application form along with a non-refundable expression of interest fee." },
-              { step: 2, title: "Corporate Verification", desc: "Submit proof of company registration, ownership details, and financial standing for audit by IFF compliance officers." },
-              { step: 3, title: "Infrastructure Audit", desc: "IFF inspectors will evaluate land deeds, stadium compliance, and training facilities to ensure they meet minimum professional standards." },
+              { step: 2, title: "Corporate Verification", desc: "Submit proof of company registration, ownership details, and financial standing for audit by FFE compliance officers." },
+              { step: 3, title: "Infrastructure Audit", desc: "FFE inspectors will evaluate land deeds, stadium compliance, and training facilities to ensure they meet minimum professional standards." },
               { step: 4, title: "Provisional Acceptance", desc: "Upon passing audits, the club receives provisional acceptance and begins integration into the league scheduling system." },
               { step: 5, title: "Final Ratification", desc: "Full membership is granted. If among the first 16, the club executes shareholder agreements for the Major League company." }
             ].map((item) => (
@@ -115,7 +115,7 @@ export default function Membership() {
       </section>
 
       <footer className="bg-black py-12 border-t border-white/10 text-center text-gray-500 mt-auto">
-        <p>© {new Date().getFullYear()} Indvundvundvwane Football Federation. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Football Federation Eswatini. All rights reserved.</p>
       </footer>
     </div>
   );

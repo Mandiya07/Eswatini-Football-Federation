@@ -7,9 +7,9 @@ export default function News() {
     {
       id: 1,
       category: "Announcement",
-      title: "IFF Officially Opens Window for Major League Membership Applications",
+      title: "FFE Officially Opens Window for Major League Membership Applications",
       date: "May 1, 2026",
-      excerpt: "The first 16 compliant clubs to pass the infrastructure audit will form the inaugural Indvundvundvwane Major League. Ensure your documents are ready.",
+      excerpt: "The first 16 compliant clubs to pass the infrastructure audit will form the inaugural Major League. Ensure your documents are ready.",
       image: "https://images.unsplash.com/photo-1574629810360-1efdb08e7cf8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
@@ -17,7 +17,7 @@ export default function News() {
       category: "League Development",
       title: "Independent Judiciary Panel Appointed for Inaugural Season",
       date: "April 28, 2026",
-      excerpt: "To ensure absolute separation of powers, the IFF has appointed a five-member independent legal panel to handle all disciplinary and integrity matters.",
+      excerpt: "To ensure absolute separation of powers, the FFE has appointed a five-member independent legal panel to handle all disciplinary and integrity matters.",
       image: "https://images.unsplash.com/photo-1511886929837-354d827aae26?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
     },
     {
@@ -68,7 +68,7 @@ export default function News() {
       </section>
 
       <footer className="bg-black py-12 border-t border-white/10 text-center text-gray-500 mt-auto">
-        <p>© {new Date().getFullYear()} Indvundvundvwane Football Federation. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Football Federation Eswatini. All rights reserved.</p>
       </footer>
     </div>
   );

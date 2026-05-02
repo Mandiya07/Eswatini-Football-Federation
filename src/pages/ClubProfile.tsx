@@ -279,7 +279,7 @@ export default function ClubProfile() {
                   {club.description} Founded in the early days of professional football in Eswatini, the club has grown to become one of the most recognized institutions in the region.
                 </p>
                 <p>
-                  The club has always stood for technical excellence and community engagement. Over the decades, they have produced numerous national team players and won several domestic cups. Their commitment to the new IFF professional standards aligns perfectly with their modern vision for a sustainable football enterprise.
+                  The club has always stood for technical excellence and community engagement. Over the decades, they have produced numerous national team players and won several domestic cups. Their commitment to the new FFE professional standards aligns perfectly with their modern vision for a sustainable football enterprise.
                 </p>
               </CardContent>
             </Card>
@@ -294,7 +294,7 @@ export default function ClubProfile() {
                          Investment Pitch & Funding Needs
                       </CardTitle>
                       <CardDescription className="text-base mt-2">
-                        Active equity offering on the IFF Investment Marketplace.
+                        Active equity offering on the FFE Investment Marketplace.
                       </CardDescription>
                     </div>
                     <Badge className="bg-yellow-100 text-yellow-800 border-yellow-300 px-3 py-1 text-sm">
@@ -346,7 +346,7 @@ export default function ClubProfile() {
                       <Building className="w-6 h-6 text-red-600" /> Infrastructure Verification
                     </CardTitle>
                     <CardDescription className="text-base mt-2">
-                      Official IFF compliance record for facilities and infrastructure.
+                      Official FFE compliance record for facilities and infrastructure.
                     </CardDescription>
                   </div>
                   <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200 px-3 py-1">
@@ -605,7 +605,7 @@ export default function ClubProfile() {
                     </div>
                   </div>
                   <div className="pt-2 border-t text-[10px] text-gray-400">
-                    Compliant with IFF Governance Code 2026. Board structure verified.
+                    Compliant with FFE Governance Code 2026. Board structure verified.
                   </div>
                 </div>
               </CardContent>
@@ -615,7 +615,7 @@ export default function ClubProfile() {
       </main>
 
       <footer className="bg-black py-8 border-t border-white/10 text-center text-gray-500 mt-auto">
-        <p className="text-sm">IFF Football Federation &copy; 2026</p>
+        <p className="text-sm">FFE Football Federation &copy; 2026</p>
       </footer>
     </div>
   );

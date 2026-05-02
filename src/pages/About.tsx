@@ -25,7 +25,7 @@ export default function About() {
           <div className="prose prose-lg max-w-none prose-headings:text-black prose-p:text-gray-600">
             <h2 className="text-3xl font-bold mb-6">A Federation of Clubs</h2>
             <p className="text-lg leading-relaxed mb-8">
-              The Indvundvundvwane Football Federation (IFF) is NOT a traditional federation of individuals or regional associations. It is an exclusive federation of football clubs. Our members are strictly the clubs themselves—no individuals, no regional associations, and no other federations hold membership.
+              The Football Federation Eswatini (FFE) is NOT a traditional federation of individuals or regional associations. It is an exclusive federation of football clubs. Our members are strictly the clubs themselves—no individuals, no regional associations, and no other federations hold membership.
             </p>
             
             <p className="text-lg leading-relaxed mb-12">
@@ -70,7 +70,7 @@ export default function About() {
       </section>
       
       <footer className="bg-black py-12 border-t border-white/10 text-center text-gray-500 mt-auto">
-        <p>© {new Date().getFullYear()} Indvundvundvwane Football Federation. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Football Federation Eswatini. All rights reserved.</p>
       </footer>
     </div>
   );
