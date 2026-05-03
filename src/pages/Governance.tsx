@@ -1,4 +1,5 @@
 import { Navbar } from '@/components/Navbar';
+import { Link } from 'react-router-dom';
 import { ShieldAlert, Eye, Search, Scale, FileText, Download, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {

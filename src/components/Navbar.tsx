@@ -14,6 +14,7 @@ export function Navbar() {
         </Link>
         <div className="hidden lg:flex gap-6">
           <Link to="/about" className="text-sm font-medium hover:text-primary transition-colors">About</Link>
+          <Link to="/structure" className="text-sm font-medium hover:text-primary transition-colors">Structure</Link>
           <Link to="/leagues" className="text-sm font-medium hover:text-primary transition-colors">Leagues</Link>
           <Link to="/membership" className="text-sm font-medium hover:text-primary transition-colors">Membership</Link>
           <Link to="/governance" className="text-sm font-medium hover:text-primary transition-colors">Governance</Link>
@@ -44,6 +45,7 @@ export function Navbar() {
       {isOpen && (
         <div className="lg:hidden absolute top-16 left-0 w-full bg-black border-b border-white/10 flex flex-col p-4 gap-4 shadow-lg">
           <Link to="/about" className="text-base font-medium hover:text-primary" onClick={() => setIsOpen(false)}>About</Link>
+          <Link to="/structure" className="text-base font-medium hover:text-primary" onClick={() => setIsOpen(false)}>Structure</Link>
           <Link to="/leagues" className="text-base font-medium hover:text-primary" onClick={() => setIsOpen(false)}>Leagues</Link>
           <Link to="/membership" className="text-base font-medium hover:text-primary" onClick={() => setIsOpen(false)}>Membership</Link>
           <Link to="/governance" className="text-base font-medium hover:text-primary" onClick={() => setIsOpen(false)}>Governance</Link>

@@ -282,13 +282,45 @@ export default function ClubProfile() {
                   <History className="w-6 h-6 text-blue-600" /> Club Overview & History
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4 text-gray-600 leading-relaxed">
-                <p>
-                  {club.description} Founded in the early days of professional football in Eswatini, the club has grown to become one of the most recognized institutions in the region.
-                </p>
-                <p>
-                  The club has always stood for technical excellence and community engagement. Over the decades, they have produced numerous national team players and won several domestic cups. Their commitment to the new FFE professional standards aligns perfectly with their modern vision for a sustainable football enterprise.
-                </p>
+              <CardContent className="space-y-6 text-gray-600 leading-relaxed">
+                <div className="space-y-4">
+                  <p>
+                    {club.description} Founded in the early days of professional football in Eswatini, the club has grown to become one of the most recognized institutions in the region.
+                  </p>
+                  <p>
+                    The club has always stood for technical excellence and community engagement. Over the decades, they have produced numerous national team players and won several domestic cups. Their commitment to the new FFE professional standards aligns perfectly with their modern vision for a sustainable football enterprise.
+                  </p>
+                </div>
+
+                {/* Timeline Component */}
+                <div className="pt-6 border-t border-zinc-100">
+                  <h4 className="text-sm font-black uppercase text-gray-400 tracking-widest mb-8">Evolution & Milestones</h4>
+                  <div className="relative space-y-8 before:absolute before:inset-0 before:ml-[1.35rem] before:h-full before:w-0.5 before:bg-gradient-to-b before:from-blue-600 before:via-blue-200 before:to-transparent">
+                    {[
+                      { year: '1982', title: 'Club Founding', desc: 'Established as a community-driven football collective in the heart of the district.', icon: <Building className="w-3.5 h-3.5" /> },
+                      { year: '1995', title: 'First Major Trophy', desc: 'Victory in the Eswatini Cup, marking the club\'s entry into the national elite.', icon: <Trophy className="w-3.5 h-3.5" /> },
+                      { year: '2008', title: 'Stadium Opening', desc: 'The club moved to its current home, establishing a permanent base for fans.', icon: <MapPin className="w-3.5 h-3.5" /> },
+                      { year: '2015', title: 'Record Signing', desc: 'Landmark transfer of the national team captain, elevating technical standards.', icon: <Users className="w-3.5 h-3.5" /> },
+                      { year: '2024', title: 'Elite Division Entry', desc: 'Secured promotion and full FFE professional membership status.', icon: <ShieldCheck className="w-3.5 h-3.5" /> },
+                      { year: '2026', title: 'Global Digital Link', desc: 'Official launch of digital fan engagement and interactive stats platforms.', icon: <Globe className="w-3.5 h-3.5" /> },
+                    ].map((milestone, idx) => (
+                      <div key={idx} className="relative flex items-start group">
+                        <div className="sticky top-0 flex flex-col items-center justify-center">
+                          <div className="flex h-11 w-11 items-center justify-center rounded-full border-4 border-white bg-blue-600 text-white shadow-xl shadow-blue-100 transition-all group-hover:scale-110 z-10">
+                            {milestone.icon}
+                          </div>
+                        </div>
+                        <div className="ml-6 pt-1 flex-1">
+                          <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-3 mb-1">
+                            <span className="text-sm font-black text-blue-600 whitespace-nowrap bg-blue-50 px-2 py-0.5 rounded leading-none">{milestone.year}</span>
+                            <h5 className="font-bold text-gray-900 tracking-tight">{milestone.title}</h5>
+                          </div>
+                          <p className="text-xs text-gray-500 leading-relaxed font-medium">{milestone.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </CardContent>
             </Card>
 

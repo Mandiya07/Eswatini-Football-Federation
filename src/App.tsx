@@ -16,6 +16,7 @@ import Academy from './pages/Academy';
 import Apply from './pages/Apply';
 import Clubs from './pages/Clubs';
 import ClubProfile from './pages/ClubProfile';
+import Structure from './pages/Structure';
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/about" element={<About/>} />
+        <Route path="/structure" element={<Structure/>} />
         <Route path="/leagues" element={<Leagues/>} />
         <Route path="/membership" element={<Membership/>} />
         <Route path="/governance" element={<Governance/>} />
