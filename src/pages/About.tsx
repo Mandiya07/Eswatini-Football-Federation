@@ -45,23 +45,64 @@ export default function About() {
               </p>
             </div>
 
-            <h2 className="text-3xl font-bold mb-8">Core Principles</h2>
+            <h2 className="text-3xl font-bold mb-8">Core Principles & Ecosystem Pillars</h2>
             
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="bg-white border rounded-xl p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-transform">
-                <CheckCircle2 className="w-10 h-10 text-primary mb-4" />
+                <CheckCircle2 className="w-8 h-8 text-primary mb-4" />
                 <h3 className="text-xl font-bold mb-2">Professionalism</h3>
                 <p className="text-sm text-gray-600">Every member must operate as a registered company with professional standards across all operations.</p>
               </div>
               <div className="bg-white border rounded-xl p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] border-secondary/50 hover:-translate-y-1 transition-transform">
-                <CheckCircle2 className="w-10 h-10 text-secondary mb-4" />
-                <h3 className="text-xl font-bold mb-2">Ownership</h3>
-                <p className="text-sm text-gray-600">Clubs must own or be acquiring their own land, stadiums, training facilities, and offices.</p>
+                <CheckCircle2 className="w-8 h-8 text-secondary mb-4" />
+                <h3 className="text-xl font-bold mb-2">Exclusive Business Centres</h3>
+                <p className="text-sm text-gray-600">Clubs must own their home grounds, transforming them into revenue-generating hubs functioning 365 days a year.</p>
               </div>
               <div className="bg-white border rounded-xl p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-transform">
-                <CheckCircle2 className="w-10 h-10 text-black mb-4" />
-                <h3 className="text-xl font-bold mb-2">Integrity</h3>
-                <p className="text-sm text-gray-600">Transparent governance structures where clubs serve as watchdogs to ensure a corruption-free environment.</p>
+                <CheckCircle2 className="w-8 h-8 text-blue-500 mb-4" />
+                <h3 className="text-xl font-bold mb-2">Financial Transparency</h3>
+                <p className="text-sm text-gray-600">Strict adherence to Financial Fair Play (FFP) regulations, salary caps, and public audited accounts ensuring sustainability.</p>
+              </div>
+              <div className="bg-white border rounded-xl p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-transform">
+                <CheckCircle2 className="w-8 h-8 text-green-500 mb-4" />
+                <h3 className="text-xl font-bold mb-2">Elite Youth Academies</h3>
+                <p className="text-sm text-gray-600">Mandatory homegrown player quotas, world-class training facilities, and integration of football with formal education.</p>
+              </div>
+              <div className="bg-white border rounded-xl p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-transform">
+                <CheckCircle2 className="w-8 h-8 text-purple-500 mb-4" />
+                <h3 className="text-xl font-bold mb-2">Data & Sports Science</h3>
+                <p className="text-sm text-gray-600">Investment in performance tracking, medical departments, and tactical analytics for continuous competitive advantage.</p>
+              </div>
+              <div className="bg-white border rounded-xl p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] hover:-translate-y-1 transition-transform">
+                <CheckCircle2 className="w-8 h-8 text-orange-500 mb-4" />
+                <h3 className="text-xl font-bold mb-2">Global Fan Engagement</h3>
+                <p className="text-sm text-gray-600">Digital ecosystems offering interactive apps, membership loyalty tiers, and comprehensive broadcasting reach.</p>
+              </div>
+            </div>
+
+            <div className="mt-16 bg-blue-600 text-white rounded-2xl p-8 border-4 border-white ring-4 ring-blue-50 shadow-2xl">
+              <h2 className="text-3xl font-black mb-6 uppercase tracking-widest text-center text-white">The Stadium as a Business Centre</h2>
+              <div className="space-y-6 text-xl">
+                <p className="leading-relaxed font-medium">
+                  We are introducing a revolutionary concept in black Africa, led by Eswatini: <strong className="text-white bg-black/20 px-2 py-0.5 rounded">Exclusive Club Home Grounds</strong>.
+                </p>
+                <p className="leading-relaxed text-blue-50">
+                  Unlike traditional models where clubs "book" community venues or share public stadiums, FFE Major League stadiums are <strong>strictly business centres for the exclusive use of the owning club</strong>. Just as Old Trafford is for Manchester United and Anfield is for Liverpool, a club's stadium belongs solely to that club.
+                </p>
+                <div className="grid md:grid-cols-2 gap-6 mt-8">
+                  <div className="bg-black/20 p-6 rounded-xl border border-white/10">
+                    <h4 className="font-bold text-white mb-2 flex flex-col uppercase tracking-widest text-sm mb-4"><span className="text-blue-200">Revenue Engine</span></h4>
+                    <p className="text-base text-blue-50 font-medium">
+                      The stadium operates 365 days a year. On match days, it hosts fans. On non-match days, it acts as a commercial hub for stadium tours, sightseeing, and merchandise shopping.
+                    </p>
+                  </div>
+                  <div className="bg-black/20 p-6 rounded-xl border border-white/10">
+                    <h4 className="font-bold text-white mb-2 flex flex-col uppercase tracking-widest text-sm mb-4"><span className="text-blue-200">The Synergy</span></h4>
+                    <p className="text-base text-blue-50 font-medium">
+                      Attractive, professional football draws fans (customers). The proceeds from this business venture directly fund the club's ability to buy and maintain elite players, coaches, and staff.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 

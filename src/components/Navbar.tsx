@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
 import { useState } from 'react';
+import { Logo } from '@/components/ui/Logo';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,8 +10,9 @@ export function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full bg-black text-white border-b border-white/10">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link to="/" className="text-2xl font-bold text-white tracking-tighter flex items-center gap-2">
-          <span className="text-primary">FFE</span>
+        <Link to="/" className="text-2xl font-bold text-white tracking-tighter flex items-center gap-3">
+          <Logo className="w-10 h-10" />
+          <span className="text-white hidden sm:inline-block">Football Federation</span>
         </Link>
         <div className="hidden lg:flex gap-6">
           <Link to="/about" className="text-sm font-medium hover:text-primary transition-colors">About</Link>

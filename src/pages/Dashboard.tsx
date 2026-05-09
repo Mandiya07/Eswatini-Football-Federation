@@ -1,13 +1,26 @@
+import { useState } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
-import { FileCheck, Upload, Building, Info, Landmark, CheckCircle2, ShieldCheck, Mail, MapPin, Camera, Map } from 'lucide-react';
+import { FileCheck, Upload, Building, Info, Landmark, CheckCircle2, ShieldCheck, Mail, MapPin, Camera, Map, Menu, X, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Dashboard() {
-  // Mock login essentially 
+  const [activeTab, setActiveTab] = useState("overview");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const tabs = [
+    { id: "overview", label: "Overview" },
+    { id: "compliance", label: "Licensing & Compliance" },
+    { id: "infrastructure", label: "Infrastructure" },
+    { id: "financials", label: "Financials" },
+    { id: "documents", label: "Governance Docs" },
+    { id: "investment", label: "Funding Profile" }
+  ];
+
   return (
     <div className="min-h-screen bg-zinc-50 flex flex-col font-sans">
       <Navbar />
@@ -29,17 +42,51 @@ export default function Dashboard() {
       </div>
 
       <main className="container mx-auto px-4 py-8 flex-grow">
-        <Tabs defaultValue="overview" className="w-full">
-          <TabsList className="mb-8 bg-zinc-200/50 p-1 flex-wrap h-auto">
-            <TabsTrigger value="overview" className="data-[state=active]:bg-white">Overview</TabsTrigger>
-            <TabsTrigger value="compliance" className="data-[state=active]:bg-white">Licensing & Compliance</TabsTrigger>
-            <TabsTrigger value="infrastructure" className="data-[state=active]:bg-white">Infrastructure</TabsTrigger>
-            <TabsTrigger value="financials" className="data-[state=active]:bg-white">Financials</TabsTrigger>
-            <TabsTrigger value="documents" className="data-[state=active]:bg-white">Governance Docs</TabsTrigger>
-            <TabsTrigger value="investment" className="data-[state=active]:bg-white">Funding Profile</TabsTrigger>
-          </TabsList>
+        <Tabs value={activeTab} onValueChange={(val) => { setActiveTab(val); setIsMobileMenuOpen(false); }} className="w-full flex flex-col md:flex-row gap-8">
+          
+          {/* Mobile Dropdown Menu */}
+          <div className="md:hidden relative">
+             <Button 
+                variant="outline" 
+                className="w-full flex justify-between items-center text-left font-bold"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+             >
+                {tabs.find(t => t.id === activeTab)?.label}
+                <ChevronDown className={`w-4 h-4 transition-transform ${isMobileMenuOpen ? 'rotate-180' : ''}`} />
+             </Button>
+             
+             {isMobileMenuOpen && (
+               <div className="absolute top-full left-0 w-full mt-2 bg-white border border-zinc-200 rounded-lg shadow-xl z-20 flex flex-col overflow-hidden">
+                 {tabs.map(tab => (
+                    <button
+                      key={tab.id}
+                      onClick={() => { setActiveTab(tab.id); setIsMobileMenuOpen(false); }}
+                      className={`text-left px-4 py-3 text-sm font-medium transition-colors ${activeTab === tab.id ? 'bg-primary/10 text-primary font-bold' : 'hover:bg-zinc-50'}`}
+                    >
+                      {tab.label}
+                    </button>
+                 ))}
+               </div>
+             )}
+          </div>
 
-          <TabsContent value="overview">
+          {/* Desktop Sidebar */}
+          <div className="hidden md:block w-64 flex-shrink-0">
+             <TabsList className="flex flex-col w-full h-auto bg-transparent p-0 space-y-2">
+               {tabs.map(tab => (
+                 <TabsTrigger 
+                   key={tab.id} 
+                   value={tab.id} 
+                   className="w-full justify-start px-4 py-3 text-left data-[state=active]:bg-white data-[state=active]:shadow-sm data-[state=active]:border-zinc-200 border border-transparent rounded-lg transition-all"
+                 >
+                   {tab.label}
+                 </TabsTrigger>
+               ))}
+             </TabsList>
+          </div>
+
+          <div className="flex-1 min-w-0">
+            <TabsContent value="overview">
             <div className="grid lg:grid-cols-3 gap-8">
               <div className="lg:col-span-2 space-y-6">
                 <Card>
@@ -388,36 +435,61 @@ export default function Dashboard() {
           </TabsContent>
 
           <TabsContent value="investment">
-             <Card>
-               <CardHeader>
-                 <CardTitle>Marketplace Pitch</CardTitle>
-                 <CardDescription>Manage your public funding profile visible to investors.</CardDescription>
+             <Card className="border-t-4 border-t-yellow-500 shadow-md">
+               <CardHeader className="pb-4">
+                 <div className="flex items-center justify-between">
+                   <div>
+                     <CardTitle className="text-2xl flex items-center gap-2 text-yellow-600">
+                        Investment Pitch & Funding Needs
+                     </CardTitle>
+                     <CardDescription className="text-base mt-2">
+                       Manage your active equity offering on the FFE Investment Marketplace.
+                     </CardDescription>
+                   </div>
+                   <div className="flex items-center gap-2">
+                     <Badge className="bg-yellow-100 text-yellow-800 border-yellow-300 px-3 py-1 text-sm mr-2">
+                       Seed Round
+                     </Badge>
+                     <span className="font-bold text-sm bg-blue-100 text-blue-800 px-3 py-1 rounded">Profile Live</span>
+                     <Button variant="outline" size="sm">Edit Profile</Button>
+                   </div>
+                 </div>
                </CardHeader>
                <CardContent>
-                 <div className="bg-zinc-50 border rounded-xl p-6">
-                    <div className="flex justify-between items-center mb-4">
-                       <span className="font-bold text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded">Profile Live</span>
-                       <Button variant="outline" size="sm">Edit Profile</Button>
+                 <div className="grid md:grid-cols-2 gap-6 mb-6">
+                   <div className="p-4 bg-zinc-50 border rounded-lg">
+                      <p className="text-sm text-gray-500 mb-1">Target Capital</p>
+                      <p className="font-bold text-3xl text-blue-600">E 8,000,000</p>
+                   </div>
+                   <div className="p-4 bg-zinc-50 border rounded-lg">
+                      <p className="text-sm text-gray-500 mb-1">Equity Offered</p>
+                      <p className="font-bold text-3xl text-gray-900">15%</p>
+                   </div>
+                 </div>
+                 
+                 <div className="mb-6">
+                   <h4 className="font-bold mb-2">Use of Funds</h4>
+                   <p className="text-gray-700 p-4 bg-blue-50/50 border border-blue-100 rounded-lg">Stadium grandstand expansion & VIP suites.</p>
+                 </div>
+
+                 <div className="mb-6">
+                    <div className="flex justify-between text-sm text-gray-500 mb-2">
+                      <span>Funding Progress</span>
+                      <span className="font-bold text-gray-900">30%</span>
                     </div>
-                    <div className="space-y-4">
-                       <div>
-                          <p className="text-sm font-bold text-gray-500">Seeking</p>
-                          <p className="text-xl font-bold">E 2,500,000</p>
-                       </div>
-                       <div>
-                          <p className="text-sm font-bold text-gray-500">For</p>
-                          <p className="font-medium">Land acquisition for permanent training facility</p>
-                       </div>
-                       <div>
-                          <p className="text-sm font-bold text-gray-500">Equity Offered</p>
-                          <p className="font-medium">15%</p>
-                       </div>
+                    <div className="w-full bg-gray-100 rounded-full h-3">
+                       <div className="bg-blue-600 rounded-full h-3" style={{ width: `30%` }}></div>
                     </div>
+                 </div>
+                 
+                 <div className="flex gap-4">
+                    <Button className="flex-1 bg-black text-white hover:bg-black/80">Manage Pitch Deck</Button>
+                    <Button variant="outline" className="flex-1 border-gray-300 text-black">View Messages (3)</Button>
                  </div>
                </CardContent>
              </Card>
           </TabsContent>
-
+          </div>
         </Tabs>
       </main>
       

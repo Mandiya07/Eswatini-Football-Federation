@@ -151,8 +151,8 @@ export default function Home() {
                     <Building2 className="text-primary w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className="text-xl font-bold mb-2">Club-Owned Real Estate</h4>
-                    <p className="text-gray-400">Membership requires owning land, a stadium, and training facilities—ensuring generational wealth for clubs.</p>
+                    <h4 className="text-xl font-bold mb-2">Exclusive Business Centres</h4>
+                    <p className="text-gray-400">Stadiums are not public pitches—they are exclusive club-owned business venues operating 365 days a year to generate revenue for players and staff.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
@@ -162,6 +162,24 @@ export default function Home() {
                   <div>
                     <h4 className="text-xl font-bold mb-2">Zero Corruption Tolerance</h4>
                     <p className="text-gray-400">A transparent governance framework where clubs act as watchdogs. Strict compliance is non-negotiable.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <LockIcon className="text-blue-500 w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold mb-2">Financial Fair Play</h4>
+                    <p className="text-gray-400">Mandatory third-party audits and sustainability caps ensure leagues remain competitive and economically viable long-term.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Trophy className="text-green-500 w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold mb-2">Elite Youth Academies</h4>
+                    <p className="text-gray-400">Mandatory homegrown player quotas and world-class athletic facilities integrated with formal education systems.</p>
                   </div>
                 </div>
               </div>

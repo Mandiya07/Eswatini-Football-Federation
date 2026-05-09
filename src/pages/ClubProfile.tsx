@@ -324,6 +324,86 @@ export default function ClubProfile() {
               </CardContent>
             </Card>
 
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Youth Academy */}
+              <Card className="flex flex-col h-full">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 text-xl">
+                    <Users className="w-5 h-5 text-green-600" /> Youth Academy
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="flex flex-col flex-1">
+                  <p className="text-sm text-gray-600 mb-4 flex-1">
+                    State-of-the-art youth development program integrating elite football training with formal education, ensuring homegrown talent pipelines.
+                  </p>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between p-3 bg-zinc-50 rounded border">
+                      <span className="text-sm font-bold">U19 Elite Squad</span>
+                      <Badge variant="outline" className="bg-green-50 text-green-700">Active</Badge>
+                    </div>
+                    <div className="flex items-center justify-between p-3 bg-zinc-50 rounded border">
+                      <span className="text-sm font-bold">U15 Development</span>
+                      <Badge variant="outline" className="bg-green-50 text-green-700">Active</Badge>
+                    </div>
+                    <div className="flex items-center justify-between p-3 bg-zinc-50 rounded border">
+                      <span className="text-sm font-bold">U11 Mixed Nursery</span>
+                      <Badge variant="outline" className="bg-green-50 text-green-700">Active</Badge>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Fan Engagement & Digital */}
+              <Card className="flex flex-col h-full bg-blue-600 text-white border-blue-500 shadow-xl">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2 text-xl text-white">
+                    <Globe className="w-5 h-5 text-blue-200" /> Global Fan Ecosystem
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="flex flex-col flex-1">
+                  <p className="text-sm text-blue-100 mb-4 flex-1">
+                    Integrating fans globally through high-tier membership apps, interactive match streaming, and dynamic loyalty rewards.
+                  </p>
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between border-b border-blue-500 pb-2">
+                       <span className="text-sm font-medium">Active Members</span>
+                       <span className="font-black text-lg">24,500+</span>
+                    </div>
+                    <div className="flex items-center justify-between border-b border-blue-500 pb-2">
+                       <span className="text-sm font-medium">Digital Reach</span>
+                       <span className="font-black text-lg">1.2M</span>
+                    </div>
+                    <Button variant="secondary" className="w-full mt-2 font-bold tracking-widest uppercase text-xs">Join Official App</Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Sports Science */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-xl">
+                  <Activity className="w-5 h-5 text-purple-600" /> Sports Science & Analytics
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid sm:grid-cols-3 gap-4">
+                  <div className="p-4 bg-zinc-50 rounded-xl border border-zinc-100">
+                     <h4 className="font-black text-xs uppercase tracking-widest text-gray-500 mb-1">Medical Dept</h4>
+                     <p className="text-sm font-medium text-gray-900">Advanced injury prevention protocols & on-site physiotherapists.</p>
+                  </div>
+                  <div className="p-4 bg-zinc-50 rounded-xl border border-zinc-100">
+                     <h4 className="font-black text-xs uppercase tracking-widest text-gray-500 mb-1">Performance Data</h4>
+                     <p className="text-sm font-medium text-gray-900">GPS tracking & biometric analysis for all first-team & U19 players.</p>
+                  </div>
+                  <div className="p-4 bg-zinc-50 rounded-xl border border-zinc-100">
+                     <h4 className="font-black text-xs uppercase tracking-widest text-gray-500 mb-1">Tactical Analysis</h4>
+                     <p className="text-sm font-medium text-gray-900">AI-driven video scouting and match insights integrated.</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Investment Pitch & Funding Needs (Dynamic) */}
             {club.funding && (
               <Card className="border-t-4 border-t-yellow-500 shadow-md">
@@ -682,7 +762,7 @@ export default function ClubProfile() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <UserCheck className="w-5 h-5 text-green-600" /> Club Management
+                  <UserCheck className="w-5 h-5 text-green-600" /> Key Officials
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -690,15 +770,29 @@ export default function ClubProfile() {
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-zinc-200 flex-shrink-0" />
                     <div>
+                      <p className="text-sm font-bold">Musa Zwane</p>
+                      <p className="text-xs text-gray-500">President • musa.z@club.sz</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-zinc-200 flex-shrink-0" />
+                    <div>
                       <p className="text-sm font-bold">Thulani Sibiya</p>
-                      <p className="text-xs text-gray-500">Chief Executive Officer</p>
+                      <p className="text-xs text-gray-500">Chief Executive Officer • ceo@club.sz</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-zinc-200 flex-shrink-0" />
                     <div>
                       <p className="text-sm font-bold">Lindiwe Mdluli</p>
-                      <p className="text-xs text-gray-500">Compliance Director</p>
+                      <p className="text-xs text-gray-500">Compliance Officer • compl@club.sz</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-zinc-200 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-bold">Sihle Ntshalintshali</p>
+                      <p className="text-xs text-gray-500">Head Coach • s.ntshali@club.sz</p>
                     </div>
                   </div>
                   <div className="pt-2 border-t text-[10px] text-gray-400">

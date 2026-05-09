@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 export default function Apply() {
   const [step, setStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const totalSteps = 4;
+  const totalSteps = 5;
   
   // Represents form progress
   const progress = ((step - 1) / totalSteps) * 100;
@@ -85,19 +85,23 @@ export default function Apply() {
                </div>
                <div className={`flex flex-col items-center gap-2 ${step >= 2 ? 'text-black' : ''}`}>
                  <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step >= 2 ? 'bg-black text-white' : 'bg-gray-200'}`}>2</div>
-                 <span className="hidden sm:block">Corporate</span>
+                 <span className="hidden sm:block">Officials</span>
                </div>
                <div className={`flex flex-col items-center gap-2 ${step >= 3 ? 'text-black' : ''}`}>
                  <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step >= 3 ? 'bg-black text-white' : 'bg-gray-200'}`}>3</div>
-                 <span className="hidden sm:block">Infrastructure</span>
+                 <span className="hidden sm:block">Corporate</span>
                </div>
                <div className={`flex flex-col items-center gap-2 ${step >= 4 ? 'text-black' : ''}`}>
                  <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step >= 4 ? 'bg-black text-white' : 'bg-gray-200'}`}>4</div>
+                 <span className="hidden sm:block">Infrastructure</span>
+               </div>
+               <div className={`flex flex-col items-center gap-2 ${step >= 5 ? 'text-black' : ''}`}>
+                 <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step >= 5 ? 'bg-black text-white' : 'bg-gray-200'}`}>5</div>
                  <span className="hidden sm:block">Review</span>
                </div>
              </div>
-             <Progress value={step === 1 ? 25 : step === 2 ? 50 : step === 3 ? 75 : 100} className="h-2 bg-gray-200 [&>div]:bg-black" />
-             <div className="text-center mt-4 text-sm text-gray-500 font-medium">Compliance Checklist: {step === 1 ? 25 : step === 2 ? 50 : step === 3 ? 75 : 100}% Complete</div>
+             <Progress value={step === 1 ? 20 : step === 2 ? 40 : step === 3 ? 60 : step === 4 ? 80 : 100} className="h-2 bg-gray-200 [&>div]:bg-black" />
+             <div className="text-center mt-4 text-sm text-gray-500 font-medium">Compliance Checklist: {step === 1 ? 20 : step === 2 ? 40 : step === 3 ? 60 : step === 4 ? 80 : 100}% Complete</div>
            </div>
 
            <Card className="border-none shadow-xl bg-white overflow-hidden">
@@ -137,7 +141,7 @@ export default function Apply() {
 
                        <div className="grid sm:grid-cols-2 gap-6">
                          <div className="space-y-2">
-                           <Label htmlFor="contactName">Primary Representative Name</Label>
+                           <Label htmlFor="contactName">Contact Person</Label>
                            <Input id="contactName" required placeholder="John Doe" />
                          </div>
                          <div className="space-y-2">
@@ -148,12 +152,69 @@ export default function Apply() {
                      </div>
                    )}
 
-                   {/* STEP 2: Corporate */}
+                   {/* STEP 2: Officials */}
                    {step === 2 && (
                      <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
                        <div className="flex items-center gap-3 mb-8 pb-4 border-b">
+                         <MapPin className="w-6 h-6 text-primary" />
+                         <h2 className="text-2xl font-bold">2. Key Officials</h2>
+                       </div>
+                       
+                       <div className="grid sm:grid-cols-2 gap-6">
+                         <div className="space-y-4 border p-4 rounded-xl">
+                           <h3 className="font-bold border-b pb-2">President</h3>
+                           <div className="space-y-2">
+                             <Label htmlFor="presidentName">Name</Label>
+                             <Input id="presidentName" required />
+                           </div>
+                           <div className="space-y-2">
+                             <Label htmlFor="presidentContact">Contact Details</Label>
+                             <Input id="presidentContact" required />
+                           </div>
+                         </div>
+                         <div className="space-y-4 border p-4 rounded-xl">
+                           <h3 className="font-bold border-b pb-2">CEO</h3>
+                           <div className="space-y-2">
+                             <Label htmlFor="ceoName">Name</Label>
+                             <Input id="ceoName" required />
+                           </div>
+                           <div className="space-y-2">
+                             <Label htmlFor="ceoContact">Contact Details</Label>
+                             <Input id="ceoContact" required />
+                           </div>
+                         </div>
+                         <div className="space-y-4 border p-4 rounded-xl">
+                           <h3 className="font-bold border-b pb-2">Head Coach</h3>
+                           <div className="space-y-2">
+                             <Label htmlFor="coachName">Name</Label>
+                             <Input id="coachName" required />
+                           </div>
+                           <div className="space-y-2">
+                             <Label htmlFor="coachContact">Contact Details</Label>
+                             <Input id="coachContact" required />
+                           </div>
+                         </div>
+                         <div className="space-y-4 border p-4 rounded-xl">
+                           <h3 className="font-bold border-b pb-2">Compliance Officer</h3>
+                           <div className="space-y-2">
+                             <Label htmlFor="complianceName">Name</Label>
+                             <Input id="complianceName" required />
+                           </div>
+                           <div className="space-y-2">
+                             <Label htmlFor="complianceContact">Contact Details</Label>
+                             <Input id="complianceContact" />
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+                   )}
+
+                   {/* STEP 3: Corporate */}
+                   {step === 3 && (
+                     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                       <div className="flex items-center gap-3 mb-8 pb-4 border-b">
                          <Landmark className="w-6 h-6 text-primary" />
-                         <h2 className="text-2xl font-bold">2. Corporate & Finance</h2>
+                         <h2 className="text-2xl font-bold">3. Corporate & Finance</h2>
                        </div>
                        
                        <div className="space-y-2 mb-6">
@@ -190,6 +251,19 @@ export default function Apply() {
                              </div>
                              <Button type="button" variant="outline" size="sm"><Upload className="w-4 h-4 mr-2" /> Upload</Button>
                           </div>
+
+                          <div className="border border-dashed border-gray-300 rounded-xl p-4 flex items-center justify-between hover:bg-zinc-50 cursor-pointer transition-colors">
+                             <div className="flex items-center gap-4">
+                                <div className="p-3 bg-primary/10 rounded-full text-primary">
+                                   <FileText className="w-5 h-5" />
+                                </div>
+                                <div>
+                                   <p className="font-bold text-sm">Independent Financial Audit</p>
+                                   <p className="text-xs text-gray-500">Required for Financial Fair Play (FFP) Compliance</p>
+                                </div>
+                             </div>
+                             <Button type="button" variant="outline" size="sm"><Upload className="w-4 h-4 mr-2" /> Upload</Button>
+                          </div>
                           
                           <div className="border border-dashed border-gray-300 rounded-xl p-4 flex items-center justify-between hover:bg-zinc-50 cursor-pointer transition-colors">
                              <div className="flex items-center gap-4">
@@ -207,21 +281,21 @@ export default function Apply() {
                      </div>
                    )}
 
-                   {/* STEP 3: Infrastructure */}
-                   {step === 3 && (
+                   {/* STEP 4: Infrastructure */}
+                   {step === 4 && (
                      <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
                        <div className="flex items-center gap-3 mb-8 pb-4 border-b">
                          <MapPin className="w-6 h-6 text-primary" />
-                         <h2 className="text-2xl font-bold">3. Land & Infrastructure</h2>
+                         <h2 className="text-2xl font-bold">4. Land, Infrastructure & Academy</h2>
                        </div>
                        
                        <div className="bg-black text-white p-6 rounded-xl mb-6">
                           <p className="text-sm font-medium mb-2 uppercase tracking-wide text-gray-400">Core Requirement</p>
-                          <p className="text-sm leading-relaxed">To be eligible for the Major League, clubs must own at least 3 hectares of land designated for a training facility or stadium development.</p>
+                          <p className="text-sm leading-relaxed">To be eligible for the Major League, clubs must own at least 3 hectares of land designated for a training facility/stadium, AND demonstrate a commitment to Elite Youth Academies.</p>
                        </div>
 
                        <div className="space-y-4">
-                          <Label>Upload Facility & Land Proof</Label>
+                          <Label>Upload Facilities & Academy Proof</Label>
                           
                           <div className="border border-dashed border-gray-300 rounded-xl p-4 flex items-center justify-between hover:bg-zinc-50 cursor-pointer transition-colors">
                              <div className="flex items-center gap-4">
@@ -243,7 +317,20 @@ export default function Apply() {
                                 </div>
                                 <div>
                                    <p className="font-bold text-sm">Facility Development Plans</p>
-                                   <p className="text-xs text-gray-500">Architectural drawings or blueprints (Optional at initial stage)</p>
+                                   <p className="text-xs text-gray-500">Architectural drawings or blueprints for Stadium & Clinic</p>
+                                </div>
+                             </div>
+                             <Button type="button" variant="outline" size="sm"><Upload className="w-4 h-4 mr-2" /> Upload</Button>
+                          </div>
+
+                          <div className="border border-dashed border-gray-300 rounded-xl p-4 flex items-center justify-between hover:bg-zinc-50 cursor-pointer transition-colors">
+                             <div className="flex items-center gap-4">
+                                <div className="p-3 bg-secondary/20 rounded-full text-black">
+                                   <FileText className="w-5 h-5" />
+                                </div>
+                                <div>
+                                   <p className="font-bold text-sm">Youth Academy Development Plan</p>
+                                   <p className="text-xs text-gray-500">Outlining U19, U15, and U11 structure and educational integration.</p>
                                 </div>
                              </div>
                              <Button type="button" variant="outline" size="sm"><Upload className="w-4 h-4 mr-2" /> Upload</Button>
@@ -257,12 +344,12 @@ export default function Apply() {
                      </div>
                    )}
 
-                   {/* STEP 4: Review */}
-                   {step === 4 && (
+                   {/* STEP 5: Review */}
+                   {step === 5 && (
                      <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
                        <div className="flex items-center gap-3 mb-8 pb-4 border-b">
                          <CheckCircle2 className="w-6 h-6 text-primary" />
-                         <h2 className="text-2xl font-bold">4. Review & Declarations</h2>
+                         <h2 className="text-2xl font-bold">5. Review & Declarations</h2>
                        </div>
                        
                        <div className="bg-zinc-50 p-6 rounded-xl border border-zinc-200 mb-6">
@@ -304,7 +391,7 @@ export default function Apply() {
                      <div></div> // Spacer
                    )}
                    
-                   {step < 4 ? (
+                   {step < 5 ? (
                      <Button type="button" onClick={() => setStep(step + 1)} className="bg-black text-white px-8 hover:bg-black/80">
                        Next Step <ArrowRight className="w-4 h-4 ml-2" />
                      </Button>
