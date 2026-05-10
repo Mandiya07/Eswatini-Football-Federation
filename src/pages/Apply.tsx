@@ -7,12 +7,16 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
-import { Upload, CheckCircle2, Building, FileText, ArrowRight, ArrowLeft, Landmark, MapPin } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Upload, CheckCircle2, Building, FileText, ArrowRight, ArrowLeft, Landmark, MapPin, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Apply() {
   const [step, setStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [activeTab, setActiveTab] = useState("apply");
+  const [statusAppId, setStatusAppId] = useState("");
+  const [appStatus, setAppStatus] = useState<null | 'Pending' | 'Under Review' | 'Approved' | 'Not Found'>(null);
   const totalSteps = 5;
   
   // Represents form progress
@@ -21,6 +25,22 @@ export default function Apply() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitted(true);
+  };
+
+  const handleCheckStatus = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!statusAppId.trim()) return;
+    
+    // Mock status logic based on input
+    if (statusAppId.endsWith("1")) {
+      setAppStatus('Pending');
+    } else if (statusAppId.endsWith("2")) {
+      setAppStatus('Under Review');
+    } else if (statusAppId.endsWith("3")) {
+      setAppStatus('Approved');
+    } else {
+      setAppStatus('Not Found');
+    }
   };
 
   if (isSubmitted) {
@@ -76,37 +96,46 @@ export default function Apply() {
 
       <main className="container mx-auto px-4 py-12 flex-grow">
         <div className="max-w-4xl mx-auto">
-           {/* Progress Tracker */}
-           <div className="mb-12">
-             <div className="flex justify-between text-sm font-medium text-gray-500 mb-4 px-2">
-               <div className={`flex flex-col items-center gap-2 ${step >= 1 ? 'text-black' : ''}`}>
-                 <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step >= 1 ? 'bg-black text-white' : 'bg-gray-200'}`}>1</div>
-                 <span className="hidden sm:block">Identity</span>
-               </div>
-               <div className={`flex flex-col items-center gap-2 ${step >= 2 ? 'text-black' : ''}`}>
-                 <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step >= 2 ? 'bg-black text-white' : 'bg-gray-200'}`}>2</div>
-                 <span className="hidden sm:block">Officials</span>
-               </div>
-               <div className={`flex flex-col items-center gap-2 ${step >= 3 ? 'text-black' : ''}`}>
-                 <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step >= 3 ? 'bg-black text-white' : 'bg-gray-200'}`}>3</div>
-                 <span className="hidden sm:block">Corporate</span>
-               </div>
-               <div className={`flex flex-col items-center gap-2 ${step >= 4 ? 'text-black' : ''}`}>
-                 <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step >= 4 ? 'bg-black text-white' : 'bg-gray-200'}`}>4</div>
-                 <span className="hidden sm:block">Infrastructure</span>
-               </div>
-               <div className={`flex flex-col items-center gap-2 ${step >= 5 ? 'text-black' : ''}`}>
-                 <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step >= 5 ? 'bg-black text-white' : 'bg-gray-200'}`}>5</div>
-                 <span className="hidden sm:block">Review</span>
-               </div>
-             </div>
-             <Progress value={step === 1 ? 20 : step === 2 ? 40 : step === 3 ? 60 : step === 4 ? 80 : 100} className="h-2 bg-gray-200 [&>div]:bg-black" />
-             <div className="text-center mt-4 text-sm text-gray-500 font-medium">Compliance Checklist: {step === 1 ? 20 : step === 2 ? 40 : step === 3 ? 60 : step === 4 ? 80 : 100}% Complete</div>
-           </div>
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+            <div className="flex justify-center mb-8">
+              <TabsList className="bg-white border p-1 rounded-xl shadow-sm">
+                <TabsTrigger value="apply" className="px-6 py-2 rounded-lg data-[state=active]:bg-black data-[state=active]:text-white">New Application</TabsTrigger>
+                <TabsTrigger value="status" className="px-6 py-2 rounded-lg data-[state=active]:bg-black data-[state=active]:text-white">Check Status</TabsTrigger>
+              </TabsList>
+            </div>
 
-           <Card className="border-none shadow-xl bg-white overflow-hidden">
-             <CardContent className="p-0">
-               <form onSubmit={handleSubmit}>
+            <TabsContent value="apply" className="mt-0">
+               {/* Progress Tracker */}
+               <div className="mb-12">
+                 <div className="flex justify-between text-sm font-medium text-gray-500 mb-4 px-2">
+                   <div className={`flex flex-col items-center gap-2 ${step >= 1 ? 'text-black' : ''}`}>
+                     <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step >= 1 ? 'bg-black text-white' : 'bg-gray-200'}`}>1</div>
+                     <span className="hidden sm:block">Identity</span>
+                   </div>
+                   <div className={`flex flex-col items-center gap-2 ${step >= 2 ? 'text-black' : ''}`}>
+                     <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step >= 2 ? 'bg-black text-white' : 'bg-gray-200'}`}>2</div>
+                     <span className="hidden sm:block">Officials</span>
+                   </div>
+                   <div className={`flex flex-col items-center gap-2 ${step >= 3 ? 'text-black' : ''}`}>
+                     <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step >= 3 ? 'bg-black text-white' : 'bg-gray-200'}`}>3</div>
+                     <span className="hidden sm:block">Corporate</span>
+                   </div>
+                   <div className={`flex flex-col items-center gap-2 ${step >= 4 ? 'text-black' : ''}`}>
+                     <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step >= 4 ? 'bg-black text-white' : 'bg-gray-200'}`}>4</div>
+                     <span className="hidden sm:block">Infrastructure</span>
+                   </div>
+                   <div className={`flex flex-col items-center gap-2 ${step >= 5 ? 'text-black' : ''}`}>
+                     <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${step >= 5 ? 'bg-black text-white' : 'bg-gray-200'}`}>5</div>
+                     <span className="hidden sm:block">Review</span>
+                   </div>
+                 </div>
+                 <Progress value={step === 1 ? 20 : step === 2 ? 40 : step === 3 ? 60 : step === 4 ? 80 : 100} className="h-2 bg-gray-200 [&>div]:bg-black" />
+                 <div className="text-center mt-4 text-sm text-gray-500 font-medium">Compliance Checklist: {step === 1 ? 20 : step === 2 ? 40 : step === 3 ? 60 : step === 4 ? 80 : 100}% Complete</div>
+               </div>
+
+               <Card className="border-none shadow-xl bg-white overflow-hidden">
+                 <CardContent className="p-0">
+                   <form onSubmit={handleSubmit}>
                  <div className="p-8 md:p-12">
                    
                    {/* STEP 1: Identity */}
@@ -404,7 +433,77 @@ export default function Apply() {
                </form>
              </CardContent>
            </Card>
+           </TabsContent>
 
+           <TabsContent value="status" className="mt-0">
+              <Card className="border-none shadow-xl bg-white overflow-hidden p-8 md:p-12 text-center max-w-2xl mx-auto">
+                 <Search className="w-16 h-16 text-primary mx-auto mb-6" />
+                 <h2 className="text-3xl font-bold mb-4">Application Status Tracker</h2>
+                 <p className="text-gray-600 mb-8">Enter your secure Application ID (ex: ends with 1, 2, or 3 for mock results) to check the real-time progress of your licensing review.</p>
+                 <form onSubmit={handleCheckStatus} className="flex gap-2 max-w-md mx-auto mb-8">
+                     <Input 
+                       placeholder="e.g. FFE-26-XXXX-1" 
+                       value={statusAppId} 
+                       onChange={(e) => setStatusAppId(e.target.value)}
+                       required
+                       className="text-center bg-zinc-50 font-mono"
+                     />
+                     <Button type="submit" className="bg-black text-white hover:bg-black/80">Check Status</Button>
+                 </form>
+
+                 {appStatus && (
+                   <div className="bg-zinc-50 border rounded-xl p-6 text-left animate-in fade-in slide-in-from-bottom-2">
+                      <h3 className="font-bold text-lg mb-4 text-center border-b pb-4">Status Result</h3>
+                      {appStatus === 'Pending' && (
+                        <div className="flex flex-col items-center gap-4">
+                           <div className="p-4 bg-yellow-100 rounded-full">
+                              <FileText className="text-yellow-600 w-8 h-8" />
+                           </div>
+                           <div className="text-center">
+                             <h4 className="text-xl font-bold text-yellow-600 mb-2">Pending Initial Review</h4>
+                             <p className="text-gray-600 text-sm">Your application has been received and is awaiting initial document screening by the compliance team. Please allow 48-72 hours.</p>
+                           </div>
+                        </div>
+                      )}
+                      {appStatus === 'Under Review' && (
+                        <div className="flex flex-col items-center gap-4">
+                           <div className="p-4 bg-blue-100 rounded-full">
+                              <Search className="text-blue-600 w-8 h-8" />
+                           </div>
+                           <div className="text-center">
+                             <h4 className="text-xl font-bold text-blue-600 mb-2">Under Review</h4>
+                             <p className="text-gray-600 text-sm">Your application is currently undergoing detailed commercial and infrastructure audits by the FFE compliance committee.</p>
+                           </div>
+                        </div>
+                      )}
+                      {appStatus === 'Approved' && (
+                        <div className="flex flex-col items-center gap-4">
+                           <div className="p-4 bg-green-100 rounded-full">
+                              <CheckCircle2 className="text-green-600 w-8 h-8" />
+                           </div>
+                           <div className="text-center">
+                             <h4 className="text-xl font-bold text-green-600 mb-2">Approved</h4>
+                             <p className="text-gray-600 text-sm">Congratulations! Your licensing package has been approved. You are now officially cleared for next steps in the FFE Major League.</p>
+                           </div>
+                        </div>
+                      )}
+                      {appStatus === 'Not Found' && (
+                        <div className="flex flex-col items-center gap-4">
+                           <div className="p-4 bg-red-100 rounded-full">
+                              <CheckCircle2 className="text-red-500 w-8 h-8 hidden" />
+                              <span className="font-bold text-red-600 text-2xl">X</span>
+                           </div>
+                           <div className="text-center">
+                             <h4 className="text-xl font-bold text-red-600 mb-2">Application Not Found</h4>
+                             <p className="text-gray-600 text-sm">We could not find an application with this ID. Please check your ID and try again, or contact compliance via email.</p>
+                           </div>
+                        </div>
+                      )}
+                   </div>
+                 )}
+              </Card>
+           </TabsContent>
+          </Tabs>
         </div>
       </main>
     </div>

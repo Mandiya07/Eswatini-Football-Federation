@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Progress } from '@/components/ui/progress';
-import { FileCheck, Upload, Building, Info, Landmark, CheckCircle2, ShieldCheck, Mail, MapPin, Camera, Map, Menu, X, ChevronDown } from 'lucide-react';
+import { FileCheck, Upload, Building, Info, Landmark, CheckCircle2, ShieldCheck, Mail, MapPin, Camera, Map, Menu, X, ChevronDown, Users, TrendingUp, BarChart, AlertCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Dashboard() {
@@ -13,12 +13,12 @@ export default function Dashboard() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const tabs = [
-    { id: "overview", label: "Overview" },
-    { id: "compliance", label: "Licensing & Compliance" },
-    { id: "infrastructure", label: "Infrastructure" },
-    { id: "financials", label: "Financials" },
-    { id: "documents", label: "Governance Docs" },
-    { id: "investment", label: "Funding Profile" }
+    { id: "overview", label: "Overview", icon: <BarChart className="w-4 h-4 mr-2" /> },
+    { id: "compliance", label: "Licensing & Compliance", icon: <ShieldCheck className="w-4 h-4 mr-2" /> },
+    { id: "infrastructure", label: "Infrastructure", icon: <Building className="w-4 h-4 mr-2" /> },
+    { id: "financials", label: "Financials", icon: <Landmark className="w-4 h-4 mr-2" /> },
+    { id: "documents", label: "Governance Docs", icon: <FileCheck className="w-4 h-4 mr-2" /> },
+    { id: "investment", label: "Funding Profile", icon: <TrendingUp className="w-4 h-4 mr-2" /> }
   ];
 
   return (
@@ -44,14 +44,16 @@ export default function Dashboard() {
       <main className="container mx-auto px-4 py-8 flex-grow">
         <Tabs value={activeTab} onValueChange={(val) => { setActiveTab(val); setIsMobileMenuOpen(false); }} className="w-full flex flex-col md:flex-row gap-8">
           
-          {/* Mobile Dropdown Menu */}
-          <div className="md:hidden relative">
+                  <div className="md:hidden relative mb-6">
              <Button 
                 variant="outline" 
-                className="w-full flex justify-between items-center text-left font-bold"
+                className="w-full flex justify-between items-center text-left font-bold bg-white"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
              >
-                {tabs.find(t => t.id === activeTab)?.label}
+                <div className="flex items-center">
+                  {tabs.find(t => t.id === activeTab)?.icon}
+                  {tabs.find(t => t.id === activeTab)?.label}
+                </div>
                 <ChevronDown className={`w-4 h-4 transition-transform ${isMobileMenuOpen ? 'rotate-180' : ''}`} />
              </Button>
              
@@ -61,8 +63,9 @@ export default function Dashboard() {
                     <button
                       key={tab.id}
                       onClick={() => { setActiveTab(tab.id); setIsMobileMenuOpen(false); }}
-                      className={`text-left px-4 py-3 text-sm font-medium transition-colors ${activeTab === tab.id ? 'bg-primary/10 text-primary font-bold' : 'hover:bg-zinc-50'}`}
+                      className={`text-left px-4 py-3 text-sm font-medium transition-colors flex items-center ${activeTab === tab.id ? 'bg-primary/10 text-primary font-bold' : 'hover:bg-zinc-50'}`}
                     >
+                      {tab.icon}
                       {tab.label}
                     </button>
                  ))}
@@ -77,16 +80,89 @@ export default function Dashboard() {
                  <TabsTrigger 
                    key={tab.id} 
                    value={tab.id} 
-                   className="w-full justify-start px-4 py-3 text-left data-[state=active]:bg-white data-[state=active]:shadow-sm data-[state=active]:border-zinc-200 border border-transparent rounded-lg transition-all"
+                   className="w-full justify-start px-4 py-3 text-left data-[state=active]:bg-white data-[state=active]:shadow-sm data-[state=active]:border-zinc-200 data-[state=active]:text-primary border border-transparent rounded-lg transition-all"
                  >
-                   {tab.label}
+                   <div className="flex items-center">
+                     {tab.icon}
+                     {tab.label}
+                   </div>
                  </TabsTrigger>
                ))}
              </TabsList>
           </div>
 
           <div className="flex-1 min-w-0">
-            <TabsContent value="overview">
+            <TabsContent value="overview" className="mt-0 space-y-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <Card className="border-t-4 border-t-primary shadow-sm hover:shadow-md transition-shadow">
+                <CardContent className="p-4 md:p-6">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Registered Players</p>
+                      <h4 className="text-2xl font-bold">28</h4>
+                    </div>
+                    <div className="p-2 bg-primary/10 rounded-lg">
+                      <Users className="w-5 h-5 text-primary" />
+                    </div>
+                  </div>
+                  <div className="mt-4 flex items-center text-xs text-green-600 font-medium">
+                    <TrendingUp className="w-3 h-3 mr-1" /> +3 this month
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="border-t-4 border-t-blue-500 shadow-sm hover:shadow-md transition-shadow">
+                <CardContent className="p-4 md:p-6">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Youth Teams</p>
+                      <h4 className="text-2xl font-bold">3</h4>
+                    </div>
+                    <div className="p-2 bg-blue-100 rounded-lg">
+                      <ShieldCheck className="w-5 h-5 text-blue-600" />
+                    </div>
+                  </div>
+                  <div className="mt-4 flex items-center text-xs text-gray-500 font-medium">
+                    U13, U15, U17 active
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="border-t-4 border-t-yellow-500 shadow-sm hover:shadow-md transition-shadow">
+                <CardContent className="p-4 md:p-6">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Licensing Stage</p>
+                      <h4 className="text-2xl font-bold text-yellow-600">Phase 2</h4>
+                    </div>
+                    <div className="p-2 bg-yellow-100 rounded-lg">
+                      <FileCheck className="w-5 h-5 text-yellow-600" />
+                    </div>
+                  </div>
+                  <div className="mt-4 flex items-center text-xs text-yellow-700 font-medium">
+                    <AlertCircle className="w-3 h-3 mr-1" /> Action required
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="border-t-4 border-t-green-500 shadow-sm hover:shadow-md transition-shadow">
+                <CardContent className="p-4 md:p-6">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Capital Raised</p>
+                      <h4 className="text-2xl font-bold text-gray-900">30%</h4>
+                    </div>
+                    <div className="p-2 bg-green-100 rounded-lg">
+                      <BarChart className="w-5 h-5 text-green-600" />
+                    </div>
+                  </div>
+                  <div className="mt-4 flex items-center text-xs text-gray-500 font-medium">
+                    E 2,400,000 / E 8,000,000
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
             <div className="grid lg:grid-cols-3 gap-8">
               <div className="lg:col-span-2 space-y-6">
                 <Card>
@@ -397,11 +473,13 @@ export default function Dashboard() {
                             <FileCheck className="w-6 h-6 text-primary" />
                          </div>
                          <div>
-                            <p className="font-bold">2026/2027 Major League Rulebook</p>
+                            <p className="font-bold">FFE Official Constitution 2026</p>
                             <p className="text-sm text-gray-500">Updated: May 1, 2026</p>
                          </div>
                       </div>
-                      <Button variant="outline" size="sm">Download PDF</Button>
+                      <a href="/docs/ffe_official_constitution_2026.pdf" download>
+                         <Button variant="outline" size="sm">Download PDF</Button>
+                      </a>
                     </div>
 
                     <div className="flex items-center justify-between p-4 border rounded-lg bg-zinc-50 hover:bg-zinc-100 transition-colors">
@@ -410,11 +488,13 @@ export default function Dashboard() {
                             <FileCheck className="w-6 h-6 text-primary" />
                          </div>
                          <div>
-                            <p className="font-bold">National Disciplinary Code v4</p>
-                            <p className="text-sm text-gray-500">Updated: Dec 15, 2025</p>
+                            <p className="font-bold">Financial Fair Play Regulations</p>
+                            <p className="text-sm text-gray-500">Updated: Apr 15, 2026</p>
                          </div>
                       </div>
-                      <Button variant="outline" size="sm">Download PDF</Button>
+                      <a href="/docs/financial_fair_play_regulations.pdf" download>
+                         <Button variant="outline" size="sm">Download PDF</Button>
+                      </a>
                     </div>
 
                     <div className="flex items-center justify-between p-4 border rounded-lg bg-zinc-50 hover:bg-zinc-100 transition-colors">
@@ -423,11 +503,28 @@ export default function Dashboard() {
                             <FileCheck className="w-6 h-6 text-primary" />
                          </div>
                          <div>
-                            <p className="font-bold">Commercial Guidelines & Standards</p>
-                            <p className="text-sm text-gray-500">Includes sponsorship restrictions</p>
+                            <p className="font-bold">Anti-Corruption & Betting Code</p>
+                            <p className="text-sm text-gray-500">Updated: Jan 10, 2026</p>
                          </div>
                       </div>
-                      <Button variant="outline" size="sm">Download PDF</Button>
+                      <a href="/docs/anti_corruption_betting_code.pdf" download>
+                         <Button variant="outline" size="sm">Download PDF</Button>
+                      </a>
+                    </div>
+
+                    <div className="flex items-center justify-between p-4 border rounded-lg bg-zinc-50 hover:bg-zinc-100 transition-colors">
+                      <div className="flex items-center gap-4">
+                         <div className="p-3 bg-white border rounded-lg shadow-sm">
+                            <FileCheck className="w-6 h-6 text-primary" />
+                         </div>
+                         <div>
+                            <p className="font-bold">Club Licensing Requirements v2</p>
+                            <p className="text-sm text-gray-500">Updated: Mar 20, 2026</p>
+                         </div>
+                      </div>
+                      <a href="/docs/club_licensing_requirements_v2.pdf" download>
+                         <Button variant="outline" size="sm">Download PDF</Button>
+                      </a>
                     </div>
                  </div>
                </CardContent>
