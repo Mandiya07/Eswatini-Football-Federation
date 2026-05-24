@@ -26,16 +26,22 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setRoleLoading(true);
         const userRef = doc(db, 'users', user.uid);
         
-        // Listen to document changes to immediately reflect role updates
         unsubscribeDoc = onSnapshot(userRef, async (userSnap) => {
           if (userSnap.exists()) {
-            setRole(userSnap.data().role || 'user');
-            setRoleLoading(false);
+            const currentRole = userSnap.data().role;
+            if (user.email === 'siphom.yati@gmail.com' && currentRole !== 'super_admin') {
+              // Automatically upgrade this specific user to super_admin
+              await setDoc(userRef, { role: 'super_admin', updatedAt: serverTimestamp() }, { merge: true });
+            } else {
+              setRole(currentRole || 'user');
+              setRoleLoading(false);
+            }
           } else {
             // Create the user
+            const initialRole = user.email === 'siphom.yati@gmail.com' ? 'super_admin' : 'user';
             await setDoc(userRef, {
               email: user.email,
-              role: 'user', // Default role
+              role: initialRole, // Default role or super_admin
               createdAt: serverTimestamp(),
               updatedAt: serverTimestamp()
             });

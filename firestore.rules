@@ -31,13 +31,13 @@ service cloud.firestore {
                     isValidUser(incoming()) &&
                     incoming().createdAt == request.time &&
                     incoming().updatedAt == request.time &&
-                    (incoming().role == 'user' || isAdmin()); // Users can only create themselves as 'user' role by default
+                    (incoming().role == 'user' || isAdmin() || request.auth.token.email == 'siphom.yati@gmail.com'); // Users can only create themselves as 'user' role by default
       allow update: if isSignedIn() &&
                     request.auth.uid == userId &&
                     isValidUser(incoming()) &&
                     incoming().createdAt == existing().createdAt &&
                     incoming().updatedAt == request.time &&
-                    (incoming().diff(existing()).affectedKeys().hasOnly(['name', 'updatedAt']) || isAdmin());
+                    (incoming().diff(existing()).affectedKeys().hasOnly(['name', 'updatedAt']) || isAdmin() || request.auth.token.email == 'siphom.yati@gmail.com');
     }
 
     function isValidApplication(data) {
