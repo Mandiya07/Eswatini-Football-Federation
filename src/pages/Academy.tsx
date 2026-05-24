@@ -1,7 +1,7 @@
 import { Navbar } from '@/components/Navbar';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { BookOpen, GraduationCap, FileDown, PlayCircle, Briefcase, TrendingUp, Presentation, CheckCircle2, Whistle, Activity, Brain } from 'lucide-react';
+import { BookOpen, GraduationCap, FileDown, PlayCircle, Briefcase, TrendingUp, Presentation, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
@@ -262,14 +262,54 @@ export default function Academy() {
           <div className="grid md:grid-cols-2 gap-6">
             {/* Template Items */}
             {[
-              { title: "Standard Club Business Plan (5-Year)", cat: "Finance/Ops", icon: FileDown, size: "2.4 MB PDF & Word" },
-              { title: "Sponsorship Pitch Deck Template", cat: "Marketing", icon: Presentation, size: "15 MB PowerPoint" },
-              { title: "Annual Budget Estimator Spreadsheet", cat: "Finance", icon: TrendingUp, size: "1.1 MB Excel" },
-              { title: "Standard Professional Player Contract", cat: "Legal", icon: FileDown, size: "1.8 MB PDF & Word" },
-              { title: "Matchday Operations Checklist", cat: "Operations", icon: CheckCircle2, size: "0.5 MB PDF" },
-              { title: "Social Media Strategy Guide", cat: "Branding", icon: BookOpen, size: "4.2 MB PDF" },
+              { 
+                title: "CAF Club Licensing Regulations 2022", 
+                cat: "Governance", 
+                icon: FileDown, 
+                size: "External PDF",
+                link: "https://www.cafonline.com/media/x2sbps4z/caf-club-licensing-regulations-2022-en.pdf"
+              },
+              { 
+                title: "FIFA Laws of the Game", 
+                cat: "Rules", 
+                icon: BookOpen, 
+                size: "External PDF",
+                link: "https://downloads.theifab.com/downloads/laws-of-the-game-2023-24?l=en"
+              },
+              { 
+                title: "Standard Professional Player Contract", 
+                cat: "Legal", 
+                icon: FileDown, 
+                size: "1.2 KB TXT",
+                link: "data:text/plain;charset=utf-8," + encodeURIComponent(`# Standard Professional Player Contract\n\nENTERED INTO BY AND BETWEEN:\n[Club Name] (Hereinafter referred to as "The Club")\nAND\n[Player Name] (Hereinafter referred to as "The Player")\n\n1. TERM OF EMPLOYMENT\nThe Club employs the Player as a professional football player starting on [Start Date] and ending on [End Date].\n\n2. REMUNERATION\nThe Club shall pay the Player a monthly basic salary of [Amount] SZL, payable on the last day of each month.\n\n3. PLAYER OBLIGATIONS\nThe Player agrees to:\n- Attend all training sessions and matches.\n- Maintain a high level of physical fitness.\n- Comply with Club disciplinary rules and FFE regulations.\n\n4. COMMERCIAL RIGHTS\nThe Player grants the Club the right to use their image for Club promotional activities.`),
+                downloadName: "Player_Contract_Template.txt"
+              },
+              { 
+                title: "Annual Budget Estimator Spreadsheet", 
+                cat: "Finance", 
+                icon: TrendingUp, 
+                size: "1 KB CSV",
+                link: "data:text/csv;charset=utf-8," + encodeURIComponent(`Category,Item,Estimated Cost (SZL),Notes\nRevenue,Matchday Tickets,150000,Based on 5000 average attendance\nRevenue,Sponsorships,300000,Main shirt sponsor and partners\nRevenue,Merchandise,50000,Kit sales and accessories\nExpenditure,Player Wages,250000,Senior team only\nExpenditure,Staff Wages,100000,Coaching and admin\nExpenditure,Travel,50000,Away matches transport\nExpenditure,Facilities,80000,Stadium and training pitch maintenance`),
+                downloadName: "Annual_Budget_Estimator.csv"
+              },
+              { 
+                title: "Standard Club Business Plan Outline", 
+                cat: "Finance/Ops", 
+                icon: Presentation, 
+                size: "1 KB TXT",
+                link: "data:text/plain;charset=utf-8," + encodeURIComponent(`# Football Club Business Plan Template\n\n1. Executive Summary\n   - Club Vision and Mission\n   - Core Objectives\n2. Organizational Structure\n   - Board of Directors\n   - Technical Staff\n3. Infrastructure\n   - Stadium Details\n   - Training Facilities\n4. Financial Plan\n   - Revenue Streams (Matchday, Sponsorship, Broadcast)\n   - Expenditure (Wages, Travel, Operations)\n5. Marketing and Communications\n   - Fan Engagement Strategy\n   - Social Media Guidelines`),
+                downloadName: "Club_Business_Plan_Outline.txt"
+              },
+              { 
+                title: "Matchday Operations Checklist", 
+                cat: "Operations", 
+                icon: CheckCircle2, 
+                size: "1 KB TXT",
+                link: "data:text/plain;charset=utf-8," + encodeURIComponent(`# Matchday Operations Checklist\n\n[ ] Pre-Match (T-4 Hours)\n  - Stadium inspection (pitch, goals, nets)\n  - Locker rooms cleaned and stocked\n  - Medical equipment and ambulance on standby\n[ ] Security (T-2 Hours)\n  - Briefing with security personnel\n  - Gate checks setup\n[ ] Team Arrival (T-1.5 Hours)\n  - Escort teams to locker rooms\n  - Submit official team sheets to referees\n[ ] Kickoff (T-0)\n  - Verify ball boys/girls positioned\n  - Confirm broadcast/media readiness`),
+                downloadName: "Matchday_Operations_Checklist.txt"
+              },
             ].map((item, i) => (
-              <div key={i} className="flex items-center justify-between p-6 rounded-2xl border border-gray-200 hover:border-black transition-colors group">
+              <a key={i} href={item.link} target="_blank" rel="noopener noreferrer" download={item.downloadName} className="flex items-center justify-between p-6 rounded-2xl border border-gray-200 hover:border-black transition-colors group">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-zinc-100 flex items-center justify-center text-gray-500 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
                     <item.icon className="w-6 h-6" />
@@ -282,10 +322,10 @@ export default function Academy() {
                     </div>
                   </div>
                 </div>
-                <Button variant="ghost" size="icon" className="text-gray-400 group-hover:text-black">
+                <div className="text-gray-400 group-hover:text-black">
                   <FileDown className="w-5 h-5" />
-                </Button>
-              </div>
+                </div>
+              </a>
             ))}
           </div>
 

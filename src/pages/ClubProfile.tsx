@@ -30,7 +30,9 @@ import {
   BarChart3,
   Activity,
   ChevronDown,
-  ChevronUp
+  ChevronUp,
+  Share2,
+  MessageCircle
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 
@@ -200,19 +202,34 @@ export default function ClubProfile() {
             </div>
             
             <div className="flex gap-3">
-              <Button asChild size="icon" variant="outline" className="rounded-full bg-white/10 border-white/20 hover:bg-white/20 text-white transition-all hover:scale-110">
+              <Button asChild size="icon" variant="outline" className="rounded-full bg-white/10 border-white/20 hover:bg-white/20 text-white transition-all hover:scale-110" title="Club Website">
                 <a href="#" target="_blank" rel="noopener noreferrer">
                   <Globe className="w-4 h-4" />
                 </a>
               </Button>
-              <Button asChild size="icon" variant="outline" className="rounded-full bg-white/10 border-white/20 hover:bg-white/20 text-white transition-all hover:scale-110">
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+              <Button onClick={() => {
+                const url = window.location.href;
+                if (navigator.share) {
+                  navigator.share({
+                    title: club.name,
+                    text: `Check out ${club.name} on the Football Federation Eswatini platform!`,
+                    url: url
+                  });
+                } else {
+                  navigator.clipboard.writeText(url);
+                  alert('Link copied to clipboard!');
+                }
+              }} size="icon" variant="outline" className="rounded-full bg-white/10 border-white/20 hover:bg-white/20 text-white transition-all hover:scale-110" title="Share via Device">
+                <Share2 className="w-4 h-4" />
+              </Button>
+              <Button asChild size="icon" variant="outline" className="rounded-full bg-white/10 border-white/20 hover:bg-blue-500 hover:border-blue-500 text-white transition-all hover:scale-110" title="Share on Twitter">
+                <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent('Check out ' + club.name + ' on Football Federation Eswatini!')}&url=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer">
                   <Twitter className="w-4 h-4" />
                 </a>
               </Button>
-              <Button asChild size="icon" variant="outline" className="rounded-full bg-white/10 border-white/20 hover:bg-white/20 text-white transition-all hover:scale-110">
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                  <Instagram className="w-4 h-4" />
+              <Button asChild size="icon" variant="outline" className="rounded-full bg-white/10 border-white/20 hover:bg-green-500 hover:border-green-500 text-white transition-all hover:scale-110" title="Share on WhatsApp">
+                <a href={`https://api.whatsapp.com/send?text=${encodeURIComponent('Check out ' + club.name + ' on Football Federation Eswatini! ' + window.location.href)}`} target="_blank" rel="noopener noreferrer">
+                  <MessageCircle className="w-4 h-4" />
                 </a>
               </Button>
             </div>

@@ -9,39 +9,99 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Upload, CheckCircle2, Building, FileText, ArrowRight, ArrowLeft, Landmark, MapPin, Search } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
+import { collection, addDoc, serverTimestamp, query, where, getDocs } from 'firebase/firestore';
+import { db } from '@/lib/firebase';
 
 export default function Apply() {
   const [step, setStep] = useState(1);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [activeTab, setActiveTab] = useState("apply");
   const [statusAppId, setStatusAppId] = useState("");
-  const [appStatus, setAppStatus] = useState<null | 'Pending' | 'Under Review' | 'Approved' | 'Not Found'>(null);
+  const [appStatus, setAppStatus] = useState<null | 'Pending' | 'Under Review' | 'Approved' | 'Not Found' | 'Rejected'>(null);
+  const [clubName, setClubName] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { user, loading } = useAuth();
+
   const totalSteps = 5;
   
   // Represents form progress
   const progress = ((step - 1) / totalSteps) * 100;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    if (!user) {
+      alert("You must be logged in to apply.");
+      return;
+    }
+    
+    setIsSubmitting(true);
+    try {
+      await addDoc(collection(db, 'applications'), {
+        clubName: clubName,
+        status: 'Pending',
+        userId: user.uid,
+        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp()
+      });
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error("Error submitting application", error);
+      alert("Failed to submit application.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const handleCheckStatus = (e: React.FormEvent) => {
+  const handleCheckStatus = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!statusAppId.trim()) return;
+    if (!statusAppId.trim() || !user) return;
     
-    // Mock status logic based on input
-    if (statusAppId.endsWith("1")) {
-      setAppStatus('Pending');
-    } else if (statusAppId.endsWith("2")) {
-      setAppStatus('Under Review');
-    } else if (statusAppId.endsWith("3")) {
-      setAppStatus('Approved');
-    } else {
+    try {
+      // For real implementation, usually we query by the document ID.
+      // But standard firestore rules might block getting a doc by arbitrary ID if you don't own it.
+      // Assuming they enter the exact document ID or something. 
+      // If the user is checking their own application:
+      const q = query(collection(db, 'applications'), where('userId', '==', user.uid));
+      const querySnapshot = await getDocs(q);
+      
+      let found = false;
+      querySnapshot.forEach((doc) => {
+        if (doc.id === statusAppId || doc.data().clubName.toLowerCase().includes(statusAppId.toLowerCase())) {
+          setAppStatus(doc.data().status);
+          found = true;
+        }
+      });
+      
+      if (!found) {
+        setAppStatus('Not Found');
+      }
+    } catch (error) {
+      console.error("Error checking status", error);
       setAppStatus('Not Found');
     }
   };
+
+  if (loading) {
+    return <div className="min-h-screen bg-zinc-50 font-sans flex items-center justify-center">Loading...</div>;
+  }
+
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-zinc-50 flex flex-col font-sans">
+        <Navbar />
+        <main className="container mx-auto px-4 py-20 flex-grow flex items-center justify-center">
+          <Card className="max-w-2xl w-full text-center border-none shadow-xl bg-white p-8 md:p-12">
+            <h2 className="text-3xl font-bold mb-4">Login Required</h2>
+            <p className="text-gray-600 mb-8 text-lg">
+              You must be logged in to access the Digital Licensing Engine and submit a club application.
+            </p>
+          </Card>
+        </main>
+      </div>
+    );
+  }
 
   if (isSubmitted) {
     return (
@@ -149,7 +209,7 @@ export default function Apply() {
                        <div className="grid sm:grid-cols-2 gap-6">
                          <div className="space-y-2">
                            <Label htmlFor="clubName">Registered Club Name</Label>
-                           <Input id="clubName" placeholder="e.g. Royal Lobamba FC" required />
+                           <Input id="clubName" placeholder="e.g. Royal Lobamba FC" value={clubName} onChange={(e) => setClubName(e.target.value)} required />
                          </div>
                          <div className="space-y-2">
                            <Label htmlFor="yearFounded">Year Founded (if applicable)</Label>

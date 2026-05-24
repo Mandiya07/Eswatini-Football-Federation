@@ -1,0 +1,40 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "A user profile record.",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string", "enum": ["super_admin", "admin", "club_admin", "user"] },
+        "createdAt": { "type": "number" },
+        "updatedAt": { "type": "number" }
+      },
+      "required": ["email", "role", "createdAt", "updatedAt"]
+    },
+    "Application": {
+      "title": "Application",
+      "description": "A club licensing application record.",
+      "type": "object",
+      "properties": {
+        "clubName": { "type": "string" },
+        "status": { "type": "string", "enum": ["Pending", "Under Review", "Approved", "Rejected"] },
+        "userId": { "type": "string", "description": "The UID of the user who submitted the application" },
+        "createdAt": { "type": "number" },
+        "updatedAt": { "type": "number" }
+      },
+      "required": ["clubName", "status", "userId", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profiles. Restricted read/write to the owner."
+    },
+    "applications/{applicationId}": {
+      "schema": { "$ref": "#/entities/Application" },
+      "description": "Club licensing applications."
+    }
+  }
+}
