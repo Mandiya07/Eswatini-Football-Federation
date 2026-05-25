@@ -1,10 +1,9 @@
 {
-  "projectId": "sincere-gist-scf5x",
-  "appId": "1:320132420925:web:931710a19717b682a76154",
-  "apiKey": "AIzaSyA2XSFNR-vUHDMOShtrexG1zZCW47h-HOA",
-  "authDomain": "sincere-gist-scf5x.firebaseapp.com",
-  "firestoreDatabaseId": "ai-studio-403e6d65-98f9-46da-bf5e-a85401e645dc",
-  "storageBucket": "sincere-gist-scf5x.firebasestorage.app",
-  "messagingSenderId": "320132420925",
+  "projectId": "football-federation-eswatini",
+  "appId": "1:599154094929:web:769113d4660bdded61d970",
+  "apiKey": "AIzaSyCAmYSWXB_DzeSSrWfYhWP6bUFRWLr42oc",
+  "authDomain": "football-federation-eswatini.firebaseapp.com",
+  "storageBucket": "football-federation-eswatini.firebasestorage.app",
+  "messagingSenderId": "599154094929",
   "measurementId": ""
 }
